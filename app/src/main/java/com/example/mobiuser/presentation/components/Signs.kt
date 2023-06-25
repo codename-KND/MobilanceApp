@@ -1,4 +1,4 @@
-package com.example.mobiuser.ui.theme.components
+package com.example.mobiuser.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape

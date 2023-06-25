@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
-import com.example.mobiuser.ui.theme.components.Signs
+import com.example.mobiuser.presentation.components.Signs
 import com.example.mobiuser.R
 
 

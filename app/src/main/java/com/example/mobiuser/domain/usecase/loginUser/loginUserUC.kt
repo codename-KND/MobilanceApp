@@ -15,9 +15,10 @@ class loginUserUC @Inject constructor(private val repository: DjangoRepository) 
     suspend fun login(credentials: Credentials): Result {
         try {
             val loginResponse = repository.authenticateUser(credentials)
+            //token handling
             return Result.Success(loginResponse)
         } catch (e: Exception) {
-            // Handle specific exceptions if needed
+            // Handle exceptions
             return Result.Error("Login failed. Please try again.")
         }
     }

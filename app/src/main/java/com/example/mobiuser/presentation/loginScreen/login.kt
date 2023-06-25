@@ -1,4 +1,4 @@
-package com.example.mobiuser.ui.theme.userUI
+package com.example.mobiuser.presentation.loginScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -22,8 +22,8 @@ import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
 import com.example.mobiuser.presentation.loginScreen.LoginViewModel
-import com.example.mobiuser.ui.theme.components.Signs
-import com.example.mobiuser.ui.theme.components.Validator
+import com.example.mobiuser.presentation.components.Signs
+import com.example.mobiuser.presentation.components.Validator
 
 
 

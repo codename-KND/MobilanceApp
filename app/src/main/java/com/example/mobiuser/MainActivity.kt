@@ -13,16 +13,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.mobiuser.presentation.loginScreen.LoginViewModel
 import com.example.mobiuser.ui.theme.driversUI.driverHome
 import com.example.mobiuser.ui.theme.driversUI.driverLogin
 import com.example.mobiuser.presentation.shared.Launch
 import com.example.mobiuser.ui.theme.MobiUserTheme
 import com.example.mobiuser.ui.theme.userUI.Home
-import com.example.mobiuser.ui.theme.userUI.Login
+import com.example.mobiuser.presentation.loginScreen.Login
 import com.example.mobiuser.ui.theme.userUI.Request
-import com.example.mobiuser.ui.theme.userUI.SignUp
+import com.example.mobiuser.presentation.signUpScreen.SignUp
 import com.example.mobiuser.presentation.shared.prelaunch
+import com.example.mobiuser.presentation.signUpScreen.SignUpViewModel
 import com.example.mobiuser.ui.theme.userUI.mapScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -62,13 +62,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "Login" ){
+    NavHost(navController = navController, startDestination = "launch" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
         composable(Goto.Login.route){ Login(navController,loginViewModel = viewModel()) }
         composable(Goto.Home.route){ Home(navController) }
-        composable(Goto.SignUp.route){ SignUp(navController) }
+        composable(Goto.SignUp.route){ SignUp(navController, signUpViewModel=viewModel()) }
         composable(Goto.Request.route){ Request(navController) }
         composable(Goto.DriverHome.route){ driverHome(navController) }
         composable(Goto.DriverLogin.route){ driverLogin(navController) }

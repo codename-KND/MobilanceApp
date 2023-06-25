@@ -12,9 +12,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
-import com.example.mobiuser.ui.theme.components.Signs
-import com.example.mobiuser.ui.theme.components.Validator
-import com.example.mobiuser.ui.theme.components.appRes
+import com.example.mobiuser.presentation.components.Signs
+import com.example.mobiuser.presentation.components.Validator
+import com.example.mobiuser.presentation.components.appRes
 
 @Composable
 fun Request(navController: NavController){

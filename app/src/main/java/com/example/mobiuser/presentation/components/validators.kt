@@ -1,4 +1,4 @@
-package com.example.mobiuser.ui.theme.components
+package com.example.mobiuser.presentation.components
 
 import android.content.Context
 import android.widget.Toast

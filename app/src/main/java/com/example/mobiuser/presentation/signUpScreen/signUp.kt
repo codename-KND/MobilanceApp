@@ -1,4 +1,4 @@
-package com.example.mobiuser.ui.theme.userUI
+package com.example.mobiuser.presentation.signUpScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -17,11 +17,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
-import com.example.mobiuser.ui.theme.components.Signs
-import com.example.mobiuser.ui.theme.components.Validator
+import com.example.mobiuser.presentation.components.Signs
+import com.example.mobiuser.presentation.components.Validator
 
 @Composable
-fun SignUp(navController: NavController) {
+fun SignUp(navController: NavController, signUpViewModel: SignUpViewModel) {
     val resor = Signs()
     val email = remember { mutableStateOf("") }
     val username = remember { mutableStateOf("") }
@@ -76,12 +76,13 @@ fun SignUp(navController: NavController) {
 
 
                     if(validation.checkSignUp(context, email, username, password, confpass)){
-                        navController.navigate(Goto.Login.route){popUpTo(Goto.Login.route)}}
+                        //send data to database
+                        signUpViewModel.signUp(email,username,password,navController)}
                           },
                 id = R.string.submit
             )
         }
-//button to be modified to sumbit
+
 
 
         Spacer(modifier = Modifier.height(48.dp))
