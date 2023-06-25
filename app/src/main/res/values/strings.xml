@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">MobiUser</string>
+
+    <string name="mobi">Mobilance</string>
+    <string name="welcome">Lets Get Started</string>
+
+    //pre launch
+    <string name="op"> Proceed as the:</string>
+    <string name="driver"> Ambulance Team </string>
+    <string name="patient"> User </string>
+
+    <string name="login">Log In</string>
+    <string name="sign">Sign Up</string>
+
+    <string name="noAcc"> Dont Have an Account?</string>
+    <string name="gotAcc"> Already Have an Account? </string>
+    
+    
+    //user app string
+    <string name="request"> Request an Ambulance</string>
+    <string name="contacts"> Get Contact Information</string>
+    <string name="History">View Your Trip history</string>
+    <string name="greet"> Please Select a Service</string>
+    <string name="submit"> Submit</string>
+
+    ///Request page
+    <string name="header">Lets Get you an Ambulance</string>
+
+    //driverhome string
+    <string name="greet2">Hey Driver, Lets Save Lives</string>
+    <string name="available"> Requests Near You</string>
+
+
+</resources>

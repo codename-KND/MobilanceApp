@@ -1,0 +1,45 @@
+package com.example.mobiuser.di
+
+import androidx.activity.ComponentActivity
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import com.example.mobilanceuser.data.remote.dto.DjangoApi
+import com.example.mobiuser.data.remote.repository.DjangoRepositoryImpl
+import com.example.mobiuser.domain.repository.DjangoRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+
+import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
+
+
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideDjangoApi(): DjangoApi{
+        return Retrofit.Builder()
+            .baseUrl("http://127.0.0.1:8000/api/")
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create(DjangoApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDjangoRepository(api: DjangoApi):DjangoRepository{
+        return DjangoRepositoryImpl(api)
+    }
+
+    @Provides
+    fun provideNavController(activity: ComponentActivity): NavController {
+        return NavHostController(activity)
+    }
+
+
+}
