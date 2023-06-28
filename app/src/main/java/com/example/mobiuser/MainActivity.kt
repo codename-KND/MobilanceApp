@@ -19,6 +19,7 @@ import com.example.mobiuser.presentation.shared.Launch
 import com.example.mobiuser.ui.theme.MobiUserTheme
 import com.example.mobiuser.ui.theme.userUI.Home
 import com.example.mobiuser.presentation.loginScreen.Login
+import com.example.mobiuser.presentation.loginScreen.LoginViewModel
 import com.example.mobiuser.presentation.requestAmbulance.Request
 import com.example.mobiuser.presentation.signUpScreen.SignUp
 import com.example.mobiuser.presentation.shared.prelaunch
@@ -65,9 +66,11 @@ fun NavigationAppHost(navController: NavHostController){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
-        composable(Goto.Login.route){ Login(navController,loginViewModel = viewModel()) }
+        composable(Goto.Login.route){
+            Login(navController)
+        }
         composable(Goto.Home.route){ Home(navController) }
-        composable(Goto.SignUp.route){ SignUp(navController, signUpViewModel=viewModel()) }
+        composable(Goto.SignUp.route){ SignUp(navController) }
         composable(Goto.Request.route){ Request(navController) }
         composable(Goto.DriverHome.route){ driverHome(navController) }
         composable(Goto.DriverLogin.route){ driverLogin(navController) }

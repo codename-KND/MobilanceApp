@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
@@ -30,7 +31,10 @@ import com.example.mobiuser.presentation.components.Validator
 @Composable
 ///user login page
 
-fun Login(navController: NavController, loginViewModel: LoginViewModel) {
+fun Login(
+    navController: NavController,
+    loginViewModel: LoginViewModel = hiltViewModel()
+) {
 
     val logo = painterResource(id = R.drawable.login)
     val user = remember { mutableStateOf("") }
@@ -81,16 +85,16 @@ fun Login(navController: NavController, loginViewModel: LoginViewModel) {
                     val user = user.value
                     val password = password.value
 
-                    // Validate user inputs
-//                    if (validation.isPasswordValid(password)) {
-//                        // Call a function to authenticate user against database
-//                        loginViewModel.onClick(user, password,navController)
-//
-//                    }
-//
-//                  else{
-//                        Toast.makeText(context,"Please fill correct username or password", Toast.LENGTH_SHORT).show()
-//                         }
+//                     Validate user inputs
+                    if (validation.isPasswordValid(password)) {
+                        // Call a function to authenticate user against database
+                        loginViewModel.onClick(user, password,navController)
+
+                    }
+
+                  else{
+                        Toast.makeText(context,"Please fill correct username or password", Toast.LENGTH_SHORT).show()
+                         }
                 }, id = R.string.login)
             }
             Spacer(modifier = Modifier.height(128.dp))

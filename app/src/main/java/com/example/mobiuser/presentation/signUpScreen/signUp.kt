@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
@@ -21,7 +22,9 @@ import com.example.mobiuser.presentation.components.Signs
 import com.example.mobiuser.presentation.components.Validator
 
 @Composable
-fun SignUp(navController: NavController, signUpViewModel: SignUpViewModel) {
+fun SignUp(
+    navController: NavController,
+    signUpViewModel: SignUpViewModel = hiltViewModel()) {
     val resor = Signs()
     val email = remember { mutableStateOf("") }
     val username = remember { mutableStateOf("") }

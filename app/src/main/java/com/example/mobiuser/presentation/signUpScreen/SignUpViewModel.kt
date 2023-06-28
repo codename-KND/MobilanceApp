@@ -8,9 +8,11 @@ import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.usecase.signUpUser.signUpUserUC
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class SignUpViewModel @Inject constructor(
     private val signUpUserUC: signUpUserUC
 ): ViewModel() {
