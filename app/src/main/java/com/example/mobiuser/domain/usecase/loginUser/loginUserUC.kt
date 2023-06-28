@@ -1,9 +1,10 @@
 package com.example.mobiuser.domain.usecase.loginUser
 
-import com.example.mobiuser.data.remote.dto.LoginResponse
+import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.repository.DjangoRepository
 import javax.inject.Inject
+
 
 class loginUserUC @Inject constructor(private val repository: DjangoRepository) {
 
@@ -15,7 +16,8 @@ class loginUserUC @Inject constructor(private val repository: DjangoRepository) 
     suspend fun login(credentials: Credentials): Result {
         try {
             val loginResponse = repository.authenticateUser(credentials)
-            //token handling
+            //TODO:token handling
+
             return Result.Success(loginResponse)
         } catch (e: Exception) {
             // Handle exceptions

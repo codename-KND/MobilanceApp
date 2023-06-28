@@ -1,10 +1,13 @@
 package com.example.mobiuser.di
 
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.activity.ComponentActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.mobilanceuser.data.remote.dto.DjangoApi
-import com.example.mobiuser.data.remote.repository.DjangoRepositoryImpl
+import com.example.mobiuser.data.repository.DjangoRepositoryImpl
 import com.example.mobiuser.domain.repository.DjangoRepository
 import dagger.Module
 import dagger.Provides
@@ -40,6 +43,13 @@ object AppModule {
     fun provideNavController(activity: ComponentActivity): NavController {
         return NavHostController(activity)
     }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(application: Application): SharedPreferences {
+        return application.getSharedPreferences("tokens", Context.MODE_PRIVATE)
+    }
+
 
 
 }

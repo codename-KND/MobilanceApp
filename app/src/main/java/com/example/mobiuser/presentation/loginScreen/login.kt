@@ -82,15 +82,15 @@ fun Login(navController: NavController, loginViewModel: LoginViewModel) {
                     val password = password.value
 
                     // Validate user inputs
-                    if (validation.isPasswordValid(password)) {
-                        // Call a function to authenticate user against database
-                        loginViewModel.onClick(user, password,navController)
-
-                    }
-
-                  else{
-                        Toast.makeText(context,"Please fill correct username or password", Toast.LENGTH_SHORT).show()
-                         }
+//                    if (validation.isPasswordValid(password)) {
+//                        // Call a function to authenticate user against database
+//                        loginViewModel.onClick(user, password,navController)
+//
+//                    }
+//
+//                  else{
+//                        Toast.makeText(context,"Please fill correct username or password", Toast.LENGTH_SHORT).show()
+//                         }
                 }, id = R.string.login)
             }
             Spacer(modifier = Modifier.height(128.dp))

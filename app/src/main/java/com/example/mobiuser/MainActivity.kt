@@ -19,10 +19,9 @@ import com.example.mobiuser.presentation.shared.Launch
 import com.example.mobiuser.ui.theme.MobiUserTheme
 import com.example.mobiuser.ui.theme.userUI.Home
 import com.example.mobiuser.presentation.loginScreen.Login
-import com.example.mobiuser.ui.theme.userUI.Request
+import com.example.mobiuser.presentation.requestAmbulance.Request
 import com.example.mobiuser.presentation.signUpScreen.SignUp
 import com.example.mobiuser.presentation.shared.prelaunch
-import com.example.mobiuser.presentation.signUpScreen.SignUpViewModel
 import com.example.mobiuser.ui.theme.userUI.mapScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -62,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "launch" ){
+    NavHost(navController = navController, startDestination = "Login" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }

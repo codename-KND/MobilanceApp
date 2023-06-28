@@ -1,4 +1,4 @@
-package com.example.mobiuser.data.remote.dto
+package com.example.mobiuser.domain.model
 
 data class UserInfo(
     val email: String,

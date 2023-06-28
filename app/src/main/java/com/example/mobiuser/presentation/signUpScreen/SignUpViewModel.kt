@@ -40,8 +40,8 @@ class SignUpViewModel @Inject constructor(
         }
     }
     private fun navigateToNextScreen(navController: NavController) {
-        navController.navigate(Goto.Launch.route) {
-            popUpTo(Goto.Home.route) {
+        navController.navigate(Goto.Login.route) {
+            popUpTo(Goto.Login.route) {
                 inclusive = true
             }
         }
