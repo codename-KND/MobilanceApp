@@ -25,7 +25,7 @@ class LoginViewModel @Inject constructor(
     private val _errorMessage = MutableLiveData<String>()
    // val errorMessage: LiveData<String> get() = _errorMessage
 
-    fun onClick(username: String, password: String,navController: NavController) {
+    fun login(username: String, password: String,navController: NavController) {
         val credentials = Credentials(username, password)
         //val tokenhandler = tokenhandler(sharedPreferences)
         viewModelScope.launch {
