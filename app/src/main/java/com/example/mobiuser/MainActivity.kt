@@ -66,9 +66,7 @@ fun NavigationAppHost(navController: NavHostController){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
-        composable(Goto.Login.route){
-            Login(navController)
-        }
+        composable(Goto.Login.route){Login(navController) }
         composable(Goto.Home.route){ Home(navController) }
         composable(Goto.SignUp.route){ SignUp(navController) }
         composable(Goto.Request.route){ Request(navController) }

@@ -86,7 +86,7 @@ fun Login(
                     val password = password.value
 
 //                     Validate user inputs
-                    if (validation.isPasswordValid(password)) {
+                    if (validation.checkLogin(context, user,password)) {
                         // Call a function to authenticate user against database
                         loginViewModel.onClick(user, password,navController)
 

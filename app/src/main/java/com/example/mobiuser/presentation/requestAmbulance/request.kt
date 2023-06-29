@@ -9,15 +9,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
 import com.example.mobiuser.presentation.components.Signs
 import com.example.mobiuser.presentation.components.Validator
 import com.example.mobiuser.presentation.components.appRes
+import com.example.mobiuser.presentation.loginScreen.LoginViewModel
 
 @Composable
-fun Request(navController: NavController){
+fun Request(
+    navController: NavController,
+    requestViewModel: RequestAmbulanceViewModel = hiltViewModel()
+){
         val imports = Signs()
         val head = appRes()
         val validation = Validator()
@@ -54,7 +59,7 @@ fun Request(navController: NavController){
 
                       // Validate user inputs
                       if(validation.checkForm(context= context,contact,  name, location, hospital)){
-                                navController.navigate(Goto.Login.route)}   //submit to database django
+                          requestViewModel.requestData(navController,contact,  name, location, hospital)}   //submit to database django
 
                       else{
                           Toast.makeText(context," Please try again", Toast.LENGTH_SHORT).show()

@@ -27,7 +27,7 @@ object AppModule {
     @Singleton
     fun provideDjangoApi(): DjangoApi{
         return Retrofit.Builder()
-            .baseUrl("http://127.0.0.1:8000/api/")
+            .baseUrl("http://192.168.100.76:8000/api/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create(DjangoApi::class.java)

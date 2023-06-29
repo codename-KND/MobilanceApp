@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUserUC: loginUserUC,
-    private val sharedPreferences: SharedPreferences
+    //private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
     private val _authenticated = MutableLiveData<Boolean>()
    // val authenticated: LiveData<Boolean> get() = _authenticated
@@ -27,14 +27,14 @@ class LoginViewModel @Inject constructor(
 
     fun onClick(username: String, password: String,navController: NavController) {
         val credentials = Credentials(username, password)
-        val tokenhandler = tokenhandler(sharedPreferences)
+        //val tokenhandler = tokenhandler(sharedPreferences)
         viewModelScope.launch {
 
 
             val result = loginUserUC.login(credentials)
             when (result) {
                 is loginUserUC.Result.Success -> {
-                    tokenhandler.storeToken(result.loginResponse.token)
+                    //tokenhandler.storeToken(result.loginResponse.token)
                     _authenticated.value = true
                     navigateToHome(navController)
                 }
@@ -47,7 +47,7 @@ class LoginViewModel @Inject constructor(
     }
 
     private fun navigateToHome(navController: NavController) {
-        navController.navigate(Goto.Login.route) {
+        navController.navigate(Goto.Home.route) {
             popUpTo(Goto.Login.route) {
                 inclusive = true
             }

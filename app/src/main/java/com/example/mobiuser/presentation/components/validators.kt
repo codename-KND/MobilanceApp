@@ -87,8 +87,12 @@ class Validator(){
 
         return full && passCheck && logCheck
     }
-    fun checkLogin(email: String,password: String){
+    fun checkLogin(context: Context, username: String,password: String): Boolean{
 
+        val isUsername = username.length>0&& !username.trim().isBlank()
+        val isPasswordValid = password.length >= 8 && !password.trim().isBlank()
+
+        return  isUsername && isPasswordValid
     }
 
 

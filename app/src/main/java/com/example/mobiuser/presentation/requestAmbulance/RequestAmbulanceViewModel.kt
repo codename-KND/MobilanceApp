@@ -12,14 +12,13 @@ import javax.inject.Inject
 
 class RequestAmbulanceViewModel @Inject constructor(
     private val RequestAmbulance: RequestAmbulanceUC,
-    private val navController: NavController
 ): ViewModel() {
 
     private val _errorMessage = MutableLiveData<String>()
-    fun requestData(requestData: RequestData) {
+    fun requestData(navController: NavController,contact:String,  name:String, location:String, hospital:String) {
         viewModelScope.launch {
-
-            RequestAmbulance.requestAmbulance(requestData)
+             //val requestData = RequestData(patient,location,hospital)
+            //RequestAmbulance.requestAmbulance()
         }
     }
 
@@ -28,7 +27,7 @@ class RequestAmbulanceViewModel @Inject constructor(
             when (result) {
                 is RequestAmbulanceUC.Result.Success -> {
                     val serverResponse = result.serverResponse
-                    navigateToNextScreen(navController)
+                    //navigateToNextScreen(navController)
                 }
                 is RequestAmbulanceUC.Result.Error -> {
                     val errorMessage = result.message
