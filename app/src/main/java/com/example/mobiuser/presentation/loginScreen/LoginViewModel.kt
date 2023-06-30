@@ -1,6 +1,7 @@
 package com.example.mobiuser.presentation.loginScreen
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,7 +31,7 @@ class LoginViewModel @Inject constructor(
         //val tokenhandler = tokenhandler(sharedPreferences)
         viewModelScope.launch {
 
-
+            Log.i("LoginViewModel", "login called")
             val result = loginUserUC.login(credentials)
             when (result) {
                 is loginUserUC.Result.Success -> {

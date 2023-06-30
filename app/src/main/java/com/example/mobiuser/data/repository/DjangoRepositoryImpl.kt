@@ -1,5 +1,6 @@
 package com.example.mobiuser.data.repository
 
+import android.util.Log
 import com.example.mobilanceuser.data.remote.dto.DjangoApi
 import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
@@ -13,7 +14,11 @@ import javax.inject.Inject
 
 class DjangoRepositoryImpl@Inject constructor(private val api :DjangoApi):DjangoRepository {
 
+
+
     override suspend fun authenticateUser(credentials: Credentials): LoginResponse {
+
+        Log.i("DjangoRepositoryImpl", "authenticateUser called here")
         return api.authenticateUser(credentials)
     }
 
