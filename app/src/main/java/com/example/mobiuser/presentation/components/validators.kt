@@ -21,7 +21,8 @@ class Validator(){
         val isStrong = isPasswordValid(password1)
 
         if(!isStrong){
-            Toast.makeText(context," Please input a strong password", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context," Please input a strong password:", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context," Please use Uppercase letters, a number and special character", Toast.LENGTH_LONG).show()
         }
         else if(!isMatch){
            Toast.makeText(context," Please ensure the passwords match", Toast.LENGTH_SHORT).show()
@@ -44,7 +45,7 @@ class Validator(){
     fun checkFields(context: Context,vararg values: String): Boolean {
         for (value in values) {
             if (value.isNullOrEmpty()) {
-                Toast.makeText(context,"Please fill in all the fields correctly from cf", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Please fill in all the fields correctly ", Toast.LENGTH_SHORT).show()
                 return false // Missing value found
             }
         }

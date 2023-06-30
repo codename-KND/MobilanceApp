@@ -88,7 +88,7 @@ fun Login(
 //                     Validate user inputs
                     if (validation.checkLogin(context, user,password)) {
                         // Call a function to authenticate user against database
-                        loginViewModel.login(user, password,navController)
+                        loginViewModel.login(user, password,navController,context)
 
                     }
 

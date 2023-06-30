@@ -80,7 +80,7 @@ fun SignUp(
 
                     if(validation.checkSignUp(context, email, username, password, confpass)){
                         //send data to database
-                        signUpViewModel.signUp(email,username,password,navController)}
+                        signUpViewModel.signUp(email,username,password,navController,context)}
                           },
                 id = R.string.submit
             )

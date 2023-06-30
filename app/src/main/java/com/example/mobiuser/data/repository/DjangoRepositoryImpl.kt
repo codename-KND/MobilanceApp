@@ -23,6 +23,8 @@ class DjangoRepositoryImpl@Inject constructor(private val api :DjangoApi):Django
     }
 
     override suspend fun signUpUser(signUpRequest: SignUpRequest): SignUpResponse {
+        Log.i("signup", "signUpUser called in impl")
+
         return api.signUp(signUpRequest)
     }
 

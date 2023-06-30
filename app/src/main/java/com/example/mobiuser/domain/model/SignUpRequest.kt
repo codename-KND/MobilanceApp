@@ -1,6 +1,7 @@
 package com.example.mobiuser.domain.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
+
 
 
 data class SignUpRequest(
@@ -9,7 +10,19 @@ data class SignUpRequest(
     val email: String
 )
 data class SignUpResponse(
-    @field:Json(name = "username") val username: List<String>?,
-    @field:Json(name = "password") val password: List<String>?,
-    @field:Json(name = "email") val email: List<String>?
-)
+@SerializedName("user_info")
+val userInfo: UserInfo?,
+@SerializedName("token")
+val token: String?,
+@SerializedName("non_field_errors")
+val errors: List<String>?
+) {
+    data class UserInfo(
+        @SerializedName("id")
+        val id: Int,
+        @SerializedName("username")
+        val username: String,
+        @SerializedName("email")
+        val email: String
+    )
+}
