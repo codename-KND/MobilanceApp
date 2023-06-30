@@ -21,9 +21,12 @@ class loginUserUC @Inject constructor(private val repository: DjangoRepository) 
 
             val loginResponse = repository.authenticateUser(credentials)
 
+            Log.i("loginResponse", "Token: ${loginResponse.token}")
 
-            if (loginResponse.userInfo != null && loginResponse.token != null) {
+
+            if ( loginResponse.token != null) {
                 // Successful login response
+                Log.i("loginResponseSuccess", "Token: ${loginResponse.token}")
                 return Result.Success(loginResponse)
             } else if (!loginResponse.errors.isNullOrEmpty()) {
                 // Failed login response
