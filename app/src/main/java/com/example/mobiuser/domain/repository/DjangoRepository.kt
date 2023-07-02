@@ -14,5 +14,5 @@ interface DjangoRepository {
 
     suspend fun signUpUser(signUpRequest: SignUpRequest): SignUpResponse
 
-    suspend fun requestAmbulance(headers: Authorization, requestData: RequestData):ServerResponse
+    suspend fun requestAmbulance(headers: String, requestData: RequestData):ServerResponse
 }

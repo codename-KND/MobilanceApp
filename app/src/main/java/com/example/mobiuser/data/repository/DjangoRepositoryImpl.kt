@@ -33,7 +33,7 @@ class DjangoRepositoryImpl@Inject constructor(
         return api.signUp(signUpRequest)
     }
 
-    override suspend fun requestAmbulance(headers: Authorization,requestData: RequestData): ServerResponse {
+    override suspend fun requestAmbulance(headers: String,requestData: RequestData): ServerResponse {
 
         return api.requestAmbulance(headers, requestData)
     }

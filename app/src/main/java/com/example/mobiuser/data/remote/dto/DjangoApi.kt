@@ -19,5 +19,6 @@ interface DjangoApi {
     suspend fun signUp(@Body request: SignUpRequest): SignUpResponse
 
     @POST("request")
-    suspend fun requestAmbulance(@Header("Authorization") token: Authorization, @Body userRequest: RequestData): ServerResponse
+    suspend fun requestAmbulance(@Header("Authorization") Authorization: String,
+                                 @Body userRequest: RequestData): ServerResponse
 }

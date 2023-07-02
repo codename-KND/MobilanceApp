@@ -15,32 +15,7 @@ import com.example.mobiuser.presentation.components.ViewModelFun
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-//
-//class RequestAmbulanceViewModel @Inject constructor(
-//    private val tokenHandler: TokenHandler,
-//    private val RequestAmbulance: RequestAmbulanceUC,
-//): ViewModel() {
-//
-//    private val _errorMessage = MutableLiveData<String>()
-//    var res = ViewModelFun()
-//    fun requestData(navController: NavController,contact:String,  patient:String,
-//                    pickLatitude: Double,pickLongitude: Double,
-//                    hospitalLatitude:Double,hospitalLongitude:Double) {
-//        viewModelScope.launch {
-//
-//            //put token,GoogleMap api values for location and hospital,patient and contact into requestData
-//            val token = tokenHandler.getToken()
-//            Log.i("ViewModelToken", "${token}")
-//            val ambulanceRequestData =RequestData(token,patient,pickLatitude,pickLongitude,contact,hospitalLatitude,hospitalLongitude)
-//            Log.i("ViewModelToken", "$ambulanceRequestData")
-//
-//            RequestAmbulance.requestAmbulance(ambulanceRequestData)
-//            res.navigateNext(navController, Goto.Home.route)
-//
-//        }}
-//
-//
-//    }
+
 @HiltViewModel
 class RequestAmbulanceViewModel @Inject constructor(
     private val requestAmbulanceUC: RequestAmbulanceUC
@@ -59,6 +34,7 @@ class RequestAmbulanceViewModel @Inject constructor(
         hospitalLongitude: Double
     ) {
         viewModelScope.launch {
+            Log.i("userLog","launch ambulancecall")
             requestAmbulanceUC.requestAmbulance(
                 contact = contact,
                 patient = patient,
