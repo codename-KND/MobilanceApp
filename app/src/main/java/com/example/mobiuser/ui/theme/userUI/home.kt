@@ -30,7 +30,7 @@ fun Home (navController: NavController){
             Spacer(modifier = Modifier.height(32.dp))
             cards.infocard(image = R.drawable.ambulancemain, desc = R.string.request, onClick = {navController.navigate(
                 Goto.Request.route)})
-            cards.infocard(image = R.drawable.twodocs, desc = R.string.contacts, onClick = {})
+            //cards.infocard(image = R.drawable.twodocs, desc = R.string.contacts, onClick = {})
             cards.infocard(image = R.drawable.laun, desc = R.string.History, onClick = {})
         }
     }

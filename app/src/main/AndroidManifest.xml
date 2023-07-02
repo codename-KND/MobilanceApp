@@ -8,6 +8,7 @@
 
 
 
+
     <application
         android:name='.MobiApplication'
         android:usesCleartextTraffic="true"

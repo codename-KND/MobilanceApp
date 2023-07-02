@@ -60,9 +60,8 @@ class Validator(){
         context: Context,
         contact: String,
         name: String,
-        location: String,
-        hospital: String ): Boolean {
-        val full = checkFields(context, contact, name, location,hospital)
+        hospitalLatitude:Double,hospitalLongitude:Double ): Boolean {
+        val full = checkFields(context, contact, name)
         val valid =validNumber(number = contact)
 
         if(!full){

@@ -5,10 +5,14 @@ import com.example.mobiuser.data.repository.DjangoRepositoryImpl
 import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.repository.DjangoRepository
+import com.example.mobiuser.domain.tokens.TokenHandler
 import javax.inject.Inject
 
 
-class loginUserUC @Inject constructor(private val repository: DjangoRepository) {
+class loginUserUC @Inject constructor(
+    private val repository: DjangoRepository,
+    private val tokenHandler: TokenHandler
+    ) {
 
     sealed class Result {
         data class Success(val loginResponse: LoginResponse) : Result()
@@ -22,10 +26,12 @@ class loginUserUC @Inject constructor(private val repository: DjangoRepository) 
             val loginResponse = repository.authenticateUser(credentials)
 
             Log.i("loginResponse", "Token: ${loginResponse.token}")
-
+        /// store token to shared preference
 
             if ( loginResponse.token != null) {
                 // Successful login response
+                /// store token to shared preference
+                tokenHandler.storeToken(loginResponse.token)
                 Log.i("loginResponseSuccess", "Token: ${loginResponse.token}")
                 return Result.Success(loginResponse)
             } else if (!loginResponse.errors.isNullOrEmpty()) {

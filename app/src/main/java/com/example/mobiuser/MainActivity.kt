@@ -8,7 +8,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,7 +18,6 @@ import com.example.mobiuser.presentation.shared.Launch
 import com.example.mobiuser.ui.theme.MobiUserTheme
 import com.example.mobiuser.ui.theme.userUI.Home
 import com.example.mobiuser.presentation.loginScreen.Login
-import com.example.mobiuser.presentation.loginScreen.LoginViewModel
 import com.example.mobiuser.presentation.requestAmbulance.Request
 import com.example.mobiuser.presentation.signUpScreen.SignUp
 import com.example.mobiuser.presentation.shared.prelaunch
@@ -36,6 +34,7 @@ sealed class  Goto(val route: String){
     object DriverLogin: Goto("driverLogin")
     object DriverHome: Goto("driverHome")
     object MapView: Goto("MapView")
+    object MyApp: Goto("MyApp")
 }
 
 @AndroidEntryPoint
@@ -62,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "Login" ){
+    NavHost(navController = navController, startDestination = "Home" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
@@ -73,6 +72,8 @@ fun NavigationAppHost(navController: NavHostController){
         composable(Goto.DriverHome.route){ driverHome(navController) }
         composable(Goto.DriverLogin.route){ driverLogin(navController) }
         composable(Goto.MapView.route){ mapScreen(navController) }
+        //composable(Goto.MyApp.route){ MyApp() }
+
         }
 
 }

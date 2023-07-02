@@ -3,7 +3,7 @@ package com.example.mobiuser.domain.tokens
 import android.content.SharedPreferences
 import javax.inject.Inject
 
-class tokenhandler @Inject constructor(
+class TokenHandler @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ){
 
