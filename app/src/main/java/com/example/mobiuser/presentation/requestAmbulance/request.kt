@@ -21,10 +21,12 @@ import com.example.mobiuser.presentation.components.Validator
 import com.example.mobiuser.presentation.components.appRes
 import com.example.mobiuser.presentation.details.GetLocationButton
 
+
 @Composable
 fun Request(
     navController: NavController,
-    requestViewModel: RequestAmbulanceViewModel = hiltViewModel()
+    requestViewModel: RequestAmbulanceViewModel = hiltViewModel(),
+
 ){
         val imports = Signs()
         val head = appRes()
@@ -75,7 +77,7 @@ fun Request(
 
                       // Validate user inputs
                       if(validation.checkForm(context= context,contact,  name, hospitalLatitude,hospitalLongitude)){
-                          //requestViewModel.requestData(navController,contact,name,pickLatitude,pickLongitude, hospitalLatitude,hospitalLongitude)
+                          requestViewModel.requestData(navController,contact,name,pickLatitude,pickLongitude, hospitalLatitude,hospitalLongitude)
                           }   //submit to database django
 
                       else{

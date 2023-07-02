@@ -3,7 +3,6 @@ package com.example.mobiuser.domain.model
 import com.squareup.moshi.Json
 
 data class RequestData(
-    @Json(name = "token") val token: String,
     @Json(name = "Patient") val patient: String,
     @Json(name = "PickLatitude") val pickLatitude: Double,
     @Json(name = "PickLongitude") val pickLongitude: Double,

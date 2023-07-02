@@ -1,5 +1,6 @@
 package com.example.mobiuser.domain.repository
 
+import com.example.mobiuser.domain.model.Authorization
 import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.model.RequestData
@@ -13,5 +14,5 @@ interface DjangoRepository {
 
     suspend fun signUpUser(signUpRequest: SignUpRequest): SignUpResponse
 
-    suspend fun requestAmbulance(requestData: RequestData):ServerResponse
+    suspend fun requestAmbulance(headers: Authorization, requestData: RequestData):ServerResponse
 }

@@ -3,6 +3,7 @@ package com.example.mobiuser.domain.usecase.requestAmbulanceUC
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mobiuser.domain.model.Authorization
 import com.example.mobiuser.domain.model.RequestData
 import com.example.mobiuser.domain.model.ServerResponse
 import com.example.mobiuser.domain.repository.DjangoRepository
@@ -64,9 +65,7 @@ class RequestAmbulanceUC @Inject constructor(
         hospitalLatitude: Double,
         hospitalLongitude: Double
     ) {
-        val token = tokenHandler.getToken()
         val requestData = RequestData(
-            token = token,
             patient = patient,
             pickLatitude = pickLatitude,
             pickLongitude = pickLongitude,
@@ -74,14 +73,16 @@ class RequestAmbulanceUC @Inject constructor(
             hospitalLatitude = hospitalLatitude,
             hospitalLongitude = hospitalLongitude
         )
+        val token = tokenHandler.getToken()
+        val headers = Authorization(token)
 
-//        try {
-//            val serverResponse = repository.requestAmbulance(requestData)
-//            Log.i("usecaseData", "$requestData")
-//            _requestResult.postValue(Result.Success(serverResponse))
-//        } catch (e: Exception) {
-//            _requestResult.postValue(Result.Error("Failed to request ambulance: ${e.message}"))
-//        }
+        try {
+            val serverResponse = repository.requestAmbulance(headers,requestData)
+            Log.i("usecaseData", "$headers")
+            _requestResult.postValue(Result.Success(serverResponse))
+        } catch (e: Exception) {
+            _requestResult.postValue(Result.Error("Failed to request ambulance: ${e.message}"))
+        }
     }
 }
 

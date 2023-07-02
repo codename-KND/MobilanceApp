@@ -12,6 +12,7 @@ import com.example.mobiuser.domain.model.RequestData
 import com.example.mobiuser.domain.tokens.TokenHandler
 import com.example.mobiuser.domain.usecase.requestAmbulanceUC.RequestAmbulanceUC
 import com.example.mobiuser.presentation.components.ViewModelFun
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 //
@@ -40,6 +41,7 @@ import javax.inject.Inject
 //
 //
 //    }
+@HiltViewModel
 class RequestAmbulanceViewModel @Inject constructor(
     private val requestAmbulanceUC: RequestAmbulanceUC
 ) : ViewModel() {
@@ -65,16 +67,16 @@ class RequestAmbulanceViewModel @Inject constructor(
                 hospitalLatitude = hospitalLatitude,
                 hospitalLongitude = hospitalLongitude
             )
-//            requestAmbulanceUC.requestResult.observeForever(){ result ->
-//                when (result) {
-//                    is RequestAmbulanceUC.Result.Success -> {
-//                        navController.navigate(Goto.Home.route)
-//                    }
-//                    is RequestAmbulanceUC.Result.Error -> {
-//                        _errorMessage.postValue(result.message)
-//                    }
-//                }
-//            }
+            requestAmbulanceUC.requestResult.observeForever(){ result ->
+                when (result) {
+                    is RequestAmbulanceUC.Result.Success -> {
+                        navController.navigate(Goto.Home.route)
+                    }
+                    is RequestAmbulanceUC.Result.Error -> {
+                        _errorMessage.postValue(result.message)
+                    }
+                }
+            }
         }
     }
 }
