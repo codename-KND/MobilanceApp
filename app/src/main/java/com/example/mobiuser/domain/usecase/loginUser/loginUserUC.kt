@@ -21,7 +21,6 @@ class loginUserUC @Inject constructor(
 
     suspend fun login(credentials: Credentials): Result {
         try {
-           // Log.i("loginUserUC", "login called")
 
             val loginResponse = repository.authenticateUser(credentials)
 

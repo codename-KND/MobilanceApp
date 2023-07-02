@@ -7,6 +7,7 @@ import com.example.mobiuser.domain.model.RequestData
 import com.example.mobiuser.domain.model.ServerResponse
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
+import com.example.mobiuser.domain.model.TripsResponse
 
 interface DjangoRepository {
 
@@ -15,4 +16,6 @@ interface DjangoRepository {
     suspend fun signUpUser(signUpRequest: SignUpRequest): SignUpResponse
 
     suspend fun requestAmbulance(headers: String, requestData: RequestData):ServerResponse
+
+    suspend fun getTrips(header:String):TripsResponse
 }

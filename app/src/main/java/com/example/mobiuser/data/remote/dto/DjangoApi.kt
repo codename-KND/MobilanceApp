@@ -7,7 +7,9 @@ import com.example.mobiuser.domain.model.RequestData
 import com.example.mobiuser.domain.model.ServerResponse
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
+import com.example.mobiuser.domain.model.TripsResponse
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -21,4 +23,7 @@ interface DjangoApi {
     @POST("request")
     suspend fun requestAmbulance(@Header("Authorization") Authorization: String,
                                  @Body userRequest: RequestData): ServerResponse
+
+    @GET("mytrips")
+    suspend fun getTrips(@Header("Authorization") Authorization: String): TripsResponse
 }

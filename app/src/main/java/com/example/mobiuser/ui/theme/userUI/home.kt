@@ -8,14 +8,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
+import com.example.mobiuser.presentation.GetTripsScreen.GetTripsViewModel
 import com.example.mobiuser.presentation.components.appRes
 
 
 @Composable
-fun Home (navController: NavController){
+fun Home (navController: NavController,
+          getTripsViewModel: GetTripsViewModel = hiltViewModel()
+){
 
     val cards = appRes()
 
@@ -31,7 +35,11 @@ fun Home (navController: NavController){
             cards.infocard(image = R.drawable.ambulancemain, desc = R.string.request, onClick = {navController.navigate(
                 Goto.Request.route)})
             //cards.infocard(image = R.drawable.twodocs, desc = R.string.contacts, onClick = {})
-            cards.infocard(image = R.drawable.laun, desc = R.string.History, onClick = {})
+            cards.infocard(image = R.drawable.laun,
+                desc = R.string.History,
+                onClick = {
+                    getTripsViewModel.fetchTrips()
+                    navController.navigate(Goto.MyApp.route)})
         }
     }
 }
