@@ -37,6 +37,7 @@ fun TripItem(trip: AvailableTripsItem,navController: NavController) {
         modifier = Modifier
             .clickable {
                 // Navigate to another screen when clicked
+                //add onclick
                 navController.navigate("AcceptTrip/${trip.request_id}")
             }
             .fillMaxWidth()

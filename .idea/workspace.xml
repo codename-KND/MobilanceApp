@@ -10,45 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26e30625-e28f-4dad-9324-8b5182e8b911" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/common/Resource.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/domain/model/AvailableTripsItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/GetRequestsScreen/GetRequestsComposable.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/detailsScreens/AcceptRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/detailsScreens/TripList.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/ui/theme/userUI/myTrips.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/data/remote/dto/DjangoApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/data/remote/dto/DjangoApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/data/repository/DjangoRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/data/repository/DjangoRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/di/AppModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/domain/repository/DjangoRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/domain/repository/DjangoRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/domain/usecase/GetTrips/GetTripsUC.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/domain/usecase/GetRequests/GetRequests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/domain/usecase/requestAmbulanceUC/RequestAmbulanceUC.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/domain/usecase/requestAmbulanceUC/RequestAmbulanceUC.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/GetTripsScreen/GetTripsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/GetRequestsScreen/GetRequestsViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/GetTripsScreen/myTrips.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/components/AppRes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/components/AppRes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/components/ViewModelFun.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/components/ViewModelFun.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/details/HospitalDrop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/detailsScreens/HospitalDrop.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/details/pickLocation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/detailsScreens/pickLocation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/loginScreen/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/loginScreen/LoginViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/loginScreen/login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/ui/theme/userUI/login.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/requestAmbulance/RequestAmbulanceViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/requestAmbulance/RequestAmbulanceViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/requestAmbulance/request.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/requestAmbulance/request.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/shared/launch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/shared/launch.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/ui/theme/driversUI/driverLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/loginScreen/driverLogin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/ui/theme/driversUI/driverhome.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/ui/theme/driversUI/driverhome.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/ui/theme/userUI/home.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/ui/theme/userUI/home.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/GetRequestsScreen/GetRequestsComposable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/GetRequestsScreen/GetRequestsComposable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/detailsScreens/TripList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mobiuser/presentation/detailsScreens/TripList.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,16 +48,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/L3NY/Desktop/PROJECT/AppDev/MobiDriver/MobiUser"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/L3NY/Desktop/PROJECT/AppDev/MobiDriver/MobiUser&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\L3NY\Desktop\PROJECT\AppDev\MobiDriver\MobiUser\app\src\main\java\com\example\mobiuser\ui\theme\userUI" />

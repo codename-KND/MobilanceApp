@@ -19,7 +19,6 @@ fun getRequests(navController: NavController,
     getTripsViewModel: GetTripsViewModel = hiltViewModel()) {
     val availableTrips: List<AvailableTripsItem> by getTripsViewModel.availableTrips.observeAsState(emptyList())
 
-    // Fetch available trips on initial composition
     LaunchedEffect(Unit) {
         getTripsViewModel.fetchAvailableTrips()
     }
