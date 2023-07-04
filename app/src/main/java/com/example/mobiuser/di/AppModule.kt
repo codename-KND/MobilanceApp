@@ -28,6 +28,7 @@ object AppModule {
     fun provideDjangoApi(): DjangoApi{
         return Retrofit.Builder()
             .baseUrl("http://192.168.100.76:8000/api/")
+            //.baseUrl("http://192.168.43.74:8000/api/")
             //.baseUrl("https://eomjc3xwz030p8y.m.pipedream.net")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()

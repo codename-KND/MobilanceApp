@@ -8,6 +8,7 @@ import com.example.mobiuser.domain.model.ServerResponse
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
 import com.example.mobiuser.domain.model.TripsResponse
+import com.example.mobiuser.domain.model.TripsResponseItem
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -25,5 +26,5 @@ interface DjangoApi {
                                  @Body userRequest: RequestData): ServerResponse
 
     @GET("mytrips")
-    suspend fun getTrips(@Header("Authorization") Authorization: String): TripsResponse
+    suspend fun getTrips(@Header("Authorization") Authorization: String):List<TripsResponseItem>
 }

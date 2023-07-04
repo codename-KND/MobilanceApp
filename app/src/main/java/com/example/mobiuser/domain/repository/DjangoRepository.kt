@@ -8,6 +8,7 @@ import com.example.mobiuser.domain.model.ServerResponse
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
 import com.example.mobiuser.domain.model.TripsResponse
+import com.example.mobiuser.domain.model.TripsResponseItem
 
 interface DjangoRepository {
 
@@ -17,5 +18,5 @@ interface DjangoRepository {
 
     suspend fun requestAmbulance(headers: String, requestData: RequestData):ServerResponse
 
-    suspend fun getTrips(header:String):TripsResponse
+    suspend fun getTrips(header:String): List<TripsResponseItem>
 }

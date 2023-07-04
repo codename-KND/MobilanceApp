@@ -38,8 +38,9 @@ fun Home (navController: NavController,
             cards.infocard(image = R.drawable.laun,
                 desc = R.string.History,
                 onClick = {
-                    getTripsViewModel.fetchTrips()
-                    navController.navigate(Goto.MyApp.route)})
+                    //getTripsViewModel.fetchTrips()
+                    navController.navigate(Goto.MyApp.route)
+                    })
         }
     }
 }

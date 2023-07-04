@@ -20,22 +20,21 @@ class GetTripsViewModel @Inject constructor(
     private val  getTripsUC: GetTripsUC
 ) : ViewModel() {
 
-    private val _trips = MutableStateFlow<List<TripsResponseItem>>(emptyList())
-    val trips: StateFlow<List<TripsResponseItem>> = _trips
+    private val _trips :MutableLiveData<List<TripsResponseItem>> = MutableLiveData()
 
+    val trips: LiveData<List<TripsResponseItem>>
+        get()=_trips
+    init {
+        fetchTrips()
+    }
     fun fetchTrips() {
         viewModelScope.launch {
-            try {
-                val tripsList = withContext(Dispatchers.IO) {
-                    getTripsUC.getTrips()
 
+                    getTripsUC().collect{trips->
+                        _trips.value = trips
                 }
                 Log.i("GetTrips","func called")
-                _trips.value = tripsList
-                Log.i("GetTripsViewModel", "Fetched trips: $tripsList")
-            } catch (e: Exception) {
-                // Handle error, show error message, etc.
-            }
+
         }
     }
 }
