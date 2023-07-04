@@ -11,21 +11,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.R
 import com.example.mobiuser.domain.model.hospitals
-import com.example.mobiuser.presentation.details.HospitalDropdown
+import com.example.mobiuser.presentation.detailsScreens.HospitalDropdown
 import com.example.mobiuser.presentation.components.Signs
 import com.example.mobiuser.presentation.components.Validator
 import com.example.mobiuser.presentation.components.appRes
-import com.example.mobiuser.presentation.details.GetLocationButton
+import com.example.mobiuser.presentation.detailsScreens.GetLocationButton
 
 
 @Composable
 fun Request(
     navController: NavController,
-    requestViewModel: RequestAmbulanceViewModel = hiltViewModel(),
+    //requestViewModel: RequestAmbulanceViewModel = hiltViewModel(),
 
 ){
         val imports = Signs()
@@ -77,7 +76,7 @@ fun Request(
 
                       // Validate user inputs
                       if(validation.checkForm(context= context,contact,  name, hospitalLatitude,hospitalLongitude)){
-                          requestViewModel.requestData(navController,contact,name,pickLatitude,pickLongitude, hospitalLatitude,hospitalLongitude)
+                          //requestViewModel.requestData(navController,contact,name,pickLatitude,pickLongitude, hospitalLatitude,hospitalLongitude)
                           }   //submit to database django
 
                       else{

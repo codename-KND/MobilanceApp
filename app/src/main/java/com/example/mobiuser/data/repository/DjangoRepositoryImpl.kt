@@ -2,16 +2,12 @@ package com.example.mobiuser.data.repository
 
 import android.util.Log
 import com.example.mobilanceuser.data.remote.dto.DjangoApi
-import com.example.mobiuser.domain.model.Authorization
+import com.example.mobiuser.domain.model.AvailableTripsItem
 import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
-import com.example.mobiuser.domain.model.RequestData
-import com.example.mobiuser.domain.model.ServerResponse
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
-import com.example.mobiuser.domain.model.TripsResponse
 import com.example.mobiuser.domain.repository.DjangoRepository
-import com.example.mobiuser.domain.tokens.TokenHandler
 import javax.inject.Inject
 
 
@@ -34,13 +30,9 @@ class DjangoRepositoryImpl@Inject constructor(
         return api.signUp(signUpRequest)
     }
 
-    override suspend fun requestAmbulance(headers: String,requestData: RequestData): ServerResponse {
 
-        return api.requestAmbulance(headers, requestData)
-    }
-
-    override suspend fun getTrips(header: String): TripsResponse {
-        return api.getTrips(header)
+    override suspend fun getRequests(header: String): List<AvailableTripsItem> {
+        return api.getRequests(header)
     }
 }
 

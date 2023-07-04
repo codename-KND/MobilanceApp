@@ -38,7 +38,7 @@ class LoginViewModel @Inject constructor(
             when (result) {
                 is loginUserUC.Result.Success -> {
                     _authenticated.value = true
-                    use.navigateNext(navController,Goto.Home.route)
+                    use.navigateNext(navController,Goto.DriverHome.route)
                 }
                 is loginUserUC.Result.Error -> {
                     _authenticated.value = false

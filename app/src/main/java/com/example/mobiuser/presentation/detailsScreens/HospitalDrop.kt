@@ -1,4 +1,4 @@
-package com.example.mobiuser.presentation.details
+package com.example.mobiuser.presentation.detailsScreens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth

@@ -1,4 +1,4 @@
-package com.example.mobiuser.presentation.details
+package com.example.mobiuser.presentation.detailsScreens
 
 import android.Manifest
 import android.app.Activity

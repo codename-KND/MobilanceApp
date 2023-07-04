@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
+import com.example.mobiuser.domain.model.hospitals
 
 class ViewModelFun {
 
@@ -16,5 +17,10 @@ class ViewModelFun {
     }
      fun showError(context: Context){
         Toast.makeText(context," An error occurred, please try again", Toast.LENGTH_SHORT).show()
+    }
+
+    fun getHospitalName(latitude: Double, longitude: Double): String? {
+        val hospital = hospitals.find { it.latitude == latitude && it.longitude == longitude }
+        return hospital?.name
     }
 }

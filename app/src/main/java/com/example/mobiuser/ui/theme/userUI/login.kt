@@ -1,4 +1,4 @@
-package com.example.mobiuser.presentation.loginScreen
+package com.example.mobiuser.ui.theme.userUI
 
 import android.widget.Toast
 import androidx.compose.foundation.Image

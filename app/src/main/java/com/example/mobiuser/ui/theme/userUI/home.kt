@@ -12,7 +12,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
-import com.example.mobiuser.presentation.GetTripsScreen.GetTripsViewModel
+import com.example.mobiuser.presentation.GetRequestsScreen.GetTripsViewModel
 import com.example.mobiuser.presentation.components.appRes
 
 
@@ -38,7 +38,7 @@ fun Home (navController: NavController,
             cards.infocard(image = R.drawable.laun,
                 desc = R.string.History,
                 onClick = {
-                    getTripsViewModel.fetchTrips()
+                    getTripsViewModel.fetchAvailableTrips()
                     navController.navigate(Goto.MyApp.route)})
         }
     }

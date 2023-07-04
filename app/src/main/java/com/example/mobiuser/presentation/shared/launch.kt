@@ -68,7 +68,7 @@ fun Launch(navController: NavController) {
             Spacer(modifier = Modifier.height(56.dp))
             Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                 val signs = Signs()
-                signs.Buttons(onClick = { navController.navigate(Goto.Login.route) }, id = R.string.login)
+                signs.Buttons(onClick = { navController.navigate(Goto.DriverLogin.route) }, id = R.string.login)
                 Spacer(modifier = Modifier.width(86.dp))
                 signs.Buttons(onClick = {navController.navigate(Goto.SignUp.route)}, id = R.string.sign)
 

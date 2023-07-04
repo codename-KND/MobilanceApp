@@ -1,4 +1,4 @@
-package com.example.mobiuser.ui.theme.driversUI
+package com.example.mobiuser.presentation.loginScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -18,15 +18,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.presentation.components.Signs
 import com.example.mobiuser.presentation.components.Validator
 import com.example.mobiuser.R
+import com.example.mobiuser.presentation.loginScreen.LoginViewModel
 
 
 @Composable
-fun driverLogin(navController: NavController) {
+fun driverLogin(navController: NavController,
+                loginViewModel: LoginViewModel = hiltViewModel()
+) {
 
     val logo = painterResource(id = R.drawable.laun)
     val user = remember { mutableStateOf("") }
@@ -68,7 +72,7 @@ fun driverLogin(navController: NavController) {
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
-            cont.Textfield(detail = user, fieldname = "Email")
+            cont.Textfield(detail = user, fieldname = "Username")
 
             Spacer(modifier = Modifier.height(14.dp))
 
@@ -77,24 +81,14 @@ fun driverLogin(navController: NavController) {
             Spacer(modifier = Modifier.height(35.dp))
             Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                 cont.Buttons(onClick = {
-                    val email = user.value
+                    val user = user.value
                     val password = password.value
 
                     // Validate user inputs
-                    if (validation.validateLogin(email, password)) {
+                    if (validation.checkLogin(context, user,password)) {
                         // Call a function to authenticate user against database
-//                        if (authenticateUser(email, password))
-//                        {
+                        loginViewModel.login(user, password,navController,context)
 
-                        navController.navigate(Goto.DriverHome.route) {
-                            popUpTo(Goto.Home.route) {
-                                inclusive = true
-                            }
-                        }
-//                        } else {
-//                            // Handle case when authentication fails
-//                            // Display an error message or redirect to the login screen
-//                        }
                     }
 
                     else{

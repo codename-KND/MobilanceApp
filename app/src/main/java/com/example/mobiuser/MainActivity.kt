@@ -12,13 +12,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.mobiuser.presentation.GetTripsScreen.MyApp
+
+import com.example.mobiuser.presentation.GetRequestsScreen.getRequests
+import com.example.mobiuser.presentation.detailsScreens.AcceptTrip
 import com.example.mobiuser.ui.theme.driversUI.driverHome
-import com.example.mobiuser.ui.theme.driversUI.driverLogin
+import com.example.mobiuser.presentation.loginScreen.driverLogin
 import com.example.mobiuser.presentation.shared.Launch
 import com.example.mobiuser.ui.theme.MobiUserTheme
 import com.example.mobiuser.ui.theme.userUI.Home
-import com.example.mobiuser.presentation.loginScreen.Login
+import com.example.mobiuser.ui.theme.userUI.Login
 import com.example.mobiuser.presentation.requestAmbulance.Request
 import com.example.mobiuser.presentation.signUpScreen.SignUp
 import com.example.mobiuser.presentation.shared.prelaunch
@@ -35,7 +37,9 @@ sealed class  Goto(val route: String){
     object DriverLogin: Goto("driverLogin")
     object DriverHome: Goto("driverHome")
     object MapView: Goto("MapView")
+    object GetRequests: Goto("GetRequests")
     object MyApp: Goto("MyApp")
+    object AcceptTrip: Goto("AcceptTrip")
 }
 
 @AndroidEntryPoint
@@ -62,18 +66,28 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "Home" ){
+    NavHost(navController = navController, startDestination = "GetRequests" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
-        composable(Goto.Login.route){Login(navController) }
+        composable(Goto.Login.route){ Login(navController) }
         composable(Goto.Home.route){ Home(navController) }
         composable(Goto.SignUp.route){ SignUp(navController) }
         composable(Goto.Request.route){ Request(navController) }
         composable(Goto.DriverHome.route){ driverHome(navController) }
         composable(Goto.DriverLogin.route){ driverLogin(navController) }
         composable(Goto.MapView.route){ mapScreen(navController) }
-        composable(Goto.MyApp.route){ MyApp() }
+        //composable(Goto.MyApp.route){ MyApp(navController) }
+        composable(Goto.GetRequests.route){ getRequests(navController) }
+        composable(Goto.AcceptTrip.route + "/{tripId}") { backStackEntry ->
+            val tripId = backStackEntry.arguments?.getString("tripId")
+            // Fetch the trip data using the tripId and pass it to AcceptTrip composable
+            val trip = trip// fetch the trip data using tripId
+            AcceptTrip(trip)
+        }
+    }
+        }
+
 
         }
 

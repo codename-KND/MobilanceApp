@@ -65,6 +65,12 @@ class appRes {
             fontSize =20.sp, fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Serif )
     }
+    @Composable
+    fun details(info:String){
+        Text(text = "$info", color = Color.White,
+            fontSize =15.sp,
+            fontFamily = FontFamily.Serif )
+    }
 
 
 

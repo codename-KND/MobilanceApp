@@ -1,2 +1,0 @@
-# mobiBack
-Mobilance UI
