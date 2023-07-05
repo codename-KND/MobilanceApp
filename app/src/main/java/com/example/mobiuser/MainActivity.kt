@@ -9,9 +9,11 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 
 import com.example.mobiuser.presentation.GetRequestsScreen.getRequests
 import com.example.mobiuser.presentation.detailsScreens.AcceptTrip
@@ -66,7 +68,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "driverHome" ){
+    NavHost(navController = navController, startDestination = "Login" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
@@ -78,6 +80,7 @@ fun NavigationAppHost(navController: NavHostController){
         composable(Goto.DriverLogin.route){ driverLogin(navController) }
         composable(Goto.MapView.route){ mapScreen(navController) }
         //composable(Goto.MyApp.route){ MyApp(navController) }
+
         composable(Goto.GetRequests.route){ getRequests(
 //            navController = navController.navigate(R)
         navigateToTrip = {request_id ->
@@ -86,12 +89,21 @@ fun NavigationAppHost(navController: NavHostController){
             )
         }
         ) }
-//        composable(Goto.AcceptTrip.route + "/{request_id}") { backStackEntry ->
-//            val request_id = backStackEntry.arguments?.getString("request_id")
-//            // Fetch the trip data using the request_id and pass it to AcceptTrip composable
-//            //val trip = trip// fetch the trip data using request_id
-//            //AcceptTrip(trip)
-       }}//
+       composable(
+           route = Goto.AcceptTrip.route,
+              arguments = listOf(
+                navArgument("request_id"){
+                     type = NavType.IntType
+                }
+              )
+       ){ backStackEntry ->
+              val request_id = backStackEntry.arguments?.getInt("request_id")
+           AcceptTrip(
+               trip = request_id ?: 0 ,
+
+           )
+       }
+       }}
 
 
 
