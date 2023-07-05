@@ -20,4 +20,5 @@ class GetRequestsUC @Inject constructor(
             emit(availableTrips)
 
     }
+
 }

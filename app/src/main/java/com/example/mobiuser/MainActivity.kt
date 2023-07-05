@@ -16,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 
 import com.example.mobiuser.presentation.GetRequestsScreen.getRequests
-import com.example.mobiuser.presentation.detailsScreens.AcceptTrip
+import com.example.mobiuser.presentation.GetRequestsScreen.AcceptTrip
 import com.example.mobiuser.ui.theme.driversUI.driverHome
 import com.example.mobiuser.presentation.loginScreen.driverLogin
 import com.example.mobiuser.presentation.shared.Launch
@@ -68,7 +68,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "Login" ){
+    NavHost(navController = navController, startDestination = "driverHome" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
@@ -82,7 +82,6 @@ fun NavigationAppHost(navController: NavHostController){
         //composable(Goto.MyApp.route){ MyApp(navController) }
 
         composable(Goto.GetRequests.route){ getRequests(
-//            navController = navController.navigate(R)
         navigateToTrip = {requestId ->
             navController.navigate(
                 Goto.AcceptTrip.route + "/${requestId}"

@@ -34,5 +34,9 @@ class DjangoRepositoryImpl@Inject constructor(
     override suspend fun getRequests(header: String): List<AvailableTripsItem> {
         return api.getRequests(header)
     }
+
+    override suspend fun getThisRequest(header: String, path: Int): AvailableTripsItem {
+        return api.getThisRequests(header, path)
+    }
 }
 

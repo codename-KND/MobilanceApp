@@ -6,20 +6,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobiuser.domain.model.AvailableTripsItem
 import com.example.mobiuser.domain.usecase.GetRequests.GetRequestsUC
+import com.example.mobiuser.domain.usecase.GetRequests.GetThisRequestUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class GetTripsViewModel @Inject constructor(
-    private val  getTripsUC: GetRequestsUC
+    private val  getTripsUC: GetRequestsUC,
+    private val getThisRequestUC: GetThisRequestUC
 ) : ViewModel() {
 
 
 private val _availableTrips: MutableLiveData<List<AvailableTripsItem>> = MutableLiveData()
     val availableTrips: LiveData<List<AvailableTripsItem>>
         get() = _availableTrips
-
+private val _singleTrip: MutableLiveData<AvailableTripsItem> = MutableLiveData()
+    val singleTrip: LiveData<AvailableTripsItem>
+        get()=_singleTrip
     init {
         fetchAvailableTrips()
     }
@@ -31,4 +35,10 @@ private val _availableTrips: MutableLiveData<List<AvailableTripsItem>> = Mutable
             }
         }
     }
+    fun fetchThisTrip(trip :Int) {
+        viewModelScope.launch {
+            val tripDetails = getThisRequestUC.getThisRequest(trip)
+            _singleTrip.value = tripDetails
+
+        }}
 }

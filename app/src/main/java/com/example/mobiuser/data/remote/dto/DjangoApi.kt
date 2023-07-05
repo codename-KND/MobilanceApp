@@ -9,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface DjangoApi {
     @POST("authenticate")
@@ -19,4 +20,7 @@ interface DjangoApi {
 
     @GET("available_requests")
     suspend fun getRequests(@Header("Authorization") Authorization: String):List<AvailableTripsItem>
+
+    @GET("available_requests/<int:request_id>")
+    suspend fun getThisRequests(@Header("Authorization") Authorization: String, @Path("request_id") requestId: Int,):AvailableTripsItem
 }

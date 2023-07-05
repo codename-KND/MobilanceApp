@@ -13,4 +13,6 @@ interface DjangoRepository {
     suspend fun signUpUser(signUpRequest: SignUpRequest): SignUpResponse
 
     suspend fun getRequests(header:String):List<AvailableTripsItem>
+
+    suspend fun getThisRequest(header:String,path:Int): AvailableTripsItem
 }
