@@ -83,23 +83,23 @@ fun NavigationAppHost(navController: NavHostController){
 
         composable(Goto.GetRequests.route){ getRequests(
 //            navController = navController.navigate(R)
-        navigateToTrip = {request_id ->
+        navigateToTrip = {requestId ->
             navController.navigate(
-                Goto.AcceptTrip.route + "/${request_id}"
+                Goto.AcceptTrip.route + "/${requestId}"
             )
         }
         ) }
        composable(
            route = Goto.AcceptTrip.route,
               arguments = listOf(
-                navArgument("request_id"){
+                navArgument("requestId"){
                      type = NavType.IntType
                 }
               )
        ){ backStackEntry ->
-              val request_id = backStackEntry.arguments?.getInt("request_id")
+              val requestId = backStackEntry.arguments?.getInt("requestId")
            AcceptTrip(
-               trip = request_id ?: 0 ,
+               trip = requestId ?: 0 ,
 
            )
        }
