@@ -78,11 +78,19 @@ fun NavigationAppHost(navController: NavHostController){
         composable(Goto.DriverLogin.route){ driverLogin(navController) }
         composable(Goto.MapView.route){ mapScreen(navController) }
         //composable(Goto.MyApp.route){ MyApp(navController) }
-        composable(Goto.GetRequests.route){ getRequests(navController) }
-//        composable(Goto.AcceptTrip.route + "/{tripId}") { backStackEntry ->
-//            val tripId = backStackEntry.arguments?.getString("tripId")
-//            // Fetch the trip data using the tripId and pass it to AcceptTrip composable
-//            //val trip = trip// fetch the trip data using tripId
+        composable(Goto.GetRequests.route){ getRequests(
+//            navController = navController.navigate(R)
+
+        navigateToTrip = {request_id ->
+            navController.navigate(
+                Goto.AcceptTrip.route + "/${request_id}"
+            )
+        }
+        ) }
+//        composable(Goto.AcceptTrip.route + "/{request_id}") { backStackEntry ->
+//            val request_id = backStackEntry.arguments?.getString("request_id")
+//            // Fetch the trip data using the request_id and pass it to AcceptTrip composable
+//            //val trip = trip// fetch the trip data using request_id
 //            //AcceptTrip(trip)
        }}//
 

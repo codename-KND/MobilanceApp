@@ -20,25 +20,35 @@ import com.example.mobiuser.presentation.components.ViewModelFun
 
 
 @Composable
-fun TripList(trips: List<AvailableTripsItem>, navController: NavController) {
+fun TripList(
+    trips: List<AvailableTripsItem>,
+    onClick: () -> Unit
+//    navController: NavController
+) {
 
 
     LazyColumn {
         items(trips) { trip ->
-            TripItem(trip, navController )
+            TripItem(trip, onClick )
         }
     }
 }
 
 
 @Composable
-fun TripItem(trip: AvailableTripsItem,navController: NavController) {
+fun TripItem(
+    trip: AvailableTripsItem,
+    onClick: () -> Unit
+//    navController: NavController
+) {
     Column(
         modifier = Modifier
             .clickable {
                 // Navigate to another screen when clicked
                 //add onclick
-                navController.navigate("AcceptTrip/${trip.request_id}")
+
+                onClick()
+//                navController.navigate("AcceptTrip/${trip.request_id}")
             }
             .fillMaxWidth()
             .padding(16.dp)
@@ -52,6 +62,7 @@ fun TripItem(trip: AvailableTripsItem,navController: NavController) {
                 shape = RoundedCornerShape(20)
             )
     ) {
+        /**Add Card to hold items**/
         Column(modifier = Modifier.padding(10.dp)) {
             var help = ViewModelFun()
             val hospitalName = help.getHospitalName(trip.hospitalLatitude.toDouble(), trip.hospitalLongitude.toDouble())
