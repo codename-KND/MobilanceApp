@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "driverHome" ){
+    NavHost(navController = navController, startDestination = "Login" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
@@ -78,21 +78,17 @@ fun NavigationAppHost(navController: NavHostController){
         composable(Goto.DriverLogin.route){ driverLogin(navController) }
         composable(Goto.MapView.route){ mapScreen(navController) }
         //composable(Goto.MyApp.route){ MyApp(navController) }
+
         composable(Goto.GetRequests.route){ getRequests(
 //            navController = navController.navigate(R)
-
         navigateToTrip = {request_id ->
             navController.navigate(
                 Goto.AcceptTrip.route + "/${request_id}"
             )
         }
         ) }
-//        composable(Goto.AcceptTrip.route + "/{request_id}") { backStackEntry ->
-//            val request_id = backStackEntry.arguments?.getString("request_id")
-//            // Fetch the trip data using the request_id and pass it to AcceptTrip composable
-//            //val trip = trip// fetch the trip data using request_id
-//            //AcceptTrip(trip)
-       }}//
+       composable(Goto.AcceptTrip.route){ AcceptTrip()}
+       }}
 
 
 
