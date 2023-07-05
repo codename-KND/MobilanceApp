@@ -80,7 +80,6 @@ fun NavigationAppHost(navController: NavHostController){
         //composable(Goto.MyApp.route){ MyApp(navController) }
         composable(Goto.GetRequests.route){ getRequests(
 //            navController = navController.navigate(R)
-
         navigateToTrip = {request_id ->
             navController.navigate(
                 Goto.AcceptTrip.route + "/${request_id}"
