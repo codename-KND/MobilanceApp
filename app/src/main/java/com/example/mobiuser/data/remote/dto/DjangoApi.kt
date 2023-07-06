@@ -21,6 +21,8 @@ interface DjangoApi {
     @GET("available_requests")
     suspend fun getRequests(@Header("Authorization") Authorization: String):List<AvailableTripsItem>
 
-    @GET("available_requests/<int:request_id>")
+    @GET("available_requests/{request_id}")
     suspend fun getThisRequests(@Header("Authorization") Authorization: String, @Path("request_id") requestId: Int,):AvailableTripsItem
+
+
 }

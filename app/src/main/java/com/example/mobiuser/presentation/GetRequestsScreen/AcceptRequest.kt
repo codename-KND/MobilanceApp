@@ -1,5 +1,7 @@
 package com.example.mobiuser.presentation.GetRequestsScreen
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -26,14 +28,22 @@ fun AcceptTrip(trip:Int,getTripsViewModel: GetTripsViewModel = hiltViewModel() )
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Available Requests",color = Color.Black) },
+                title = { Text(text = "Request Details",color = Color.Black) },
                 backgroundColor = Color.White,
                 elevation = 12.dp
             )
         },
         content = {
-            Text(text = "Trip ID: ${details?.request_id}")
-              Text(text = "Patient: ${details?.patient}")})
+            Card() {
+               Column(){ Text(text = "Trip ID: ${details?.request_id}")
+                   Text(text = "Patient: ${details?.patient}")
+                   Text(text = "Contact Detail: ${details?.contact}")
+
+                Text(text = "Patient: ${trip}")}
+            }
+
+
+            })
 
 
 }

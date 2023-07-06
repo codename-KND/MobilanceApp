@@ -15,12 +15,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.mobiuser.domain.model.AvailableTripsItem
 import com.example.mobiuser.presentation.detailsScreens.TripItem
-import com.example.mobiuser.presentation.detailsScreens.TripList
+
 
 @Composable
 fun getRequests(
 //    navController: NavController,
-    navigateToTrip: (tripId: Int) -> Unit,
+    //navigateToTrip: (tripId: Int) -> Unit,
+    navigateToTrip:(AvailableTripsItem) -> Unit,
     getTripsViewModel: GetTripsViewModel = hiltViewModel()) {
     val availableTrips: List<AvailableTripsItem> by getTripsViewModel.availableTrips.observeAsState(emptyList())
 
@@ -44,7 +45,11 @@ fun getRequests(
                 items(availableTrips) { trip ->
                     TripItem(
                         trip,
-                        onClick = { navigateToTrip(trip.request_id) }
+                        //onClick = { navigateToTrip(trip.request_id)
+                        onClick = { tripItem ->
+                            navigateToTrip(tripItem)
+
+                        }
                     )
                 }
             }

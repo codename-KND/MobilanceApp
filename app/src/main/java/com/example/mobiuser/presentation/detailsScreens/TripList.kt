@@ -19,26 +19,26 @@ import com.example.mobiuser.domain.model.AvailableTripsItem
 import com.example.mobiuser.presentation.components.ViewModelFun
 
 
-@Composable
-fun TripList(
-    trips: List<AvailableTripsItem>,
-    onClick: () -> Unit
-//    navController: NavController
-) {
-
-
-    LazyColumn {
-        items(trips) { trip ->
-            TripItem(trip, onClick )
-        }
-    }
-}
+//@Composable
+//fun TripList(
+//    trips: List<AvailableTripsItem>,
+//    onClick: () -> Unit
+////    navController: NavController
+//) {
+//
+//
+//    LazyColumn {
+//        items(trips) { trip ->
+//            TripItem(trip, onClick )
+//        }
+//    }
+//}
 
 
 @Composable
 fun TripItem(
     trip: AvailableTripsItem,
-    onClick: () -> Unit
+    onClick: (AvailableTripsItem) -> Unit
 //    navController: NavController
 ) {
     Column(
@@ -47,7 +47,7 @@ fun TripItem(
                 // Navigate to another screen when clicked
                 //add onclick
 
-                onClick()
+                onClick(trip)
 //                navController.navigate("AcceptTrip/${trip.request_id}")
             }
             .fillMaxWidth()
