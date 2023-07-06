@@ -33,7 +33,7 @@ fun driverHome(navController: NavController){
             Spacer(modifier = Modifier.height(32.dp))
             cards.infocard(image = R.drawable.ambulancemain, desc = R.string.available, onClick = {navController.navigate(
                 Goto.GetRequests.route)})
-            cards.infocard(image = R.drawable.laun, desc = R.string.History, onClick = {})
+            cards.infocard(image = R.drawable.laun, desc = R.string.History, onClick = {navController.navigate(Goto.TripHistory.route)})
         }
     }
 }

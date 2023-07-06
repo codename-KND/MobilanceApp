@@ -5,6 +5,7 @@ import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
+import com.example.mobiuser.domain.model.TripsResponseItem
 
 interface DjangoRepository {
 
@@ -15,4 +16,6 @@ interface DjangoRepository {
     suspend fun getRequests(header:String):List<AvailableTripsItem>
 
     suspend fun getThisRequest(header:String,path:Int): AvailableTripsItem
+
+    suspend fun getTrips(header:String): List<TripsResponseItem>
 }

@@ -33,7 +33,7 @@ fun getRequests(
         topBar = {
             TopAppBar(
                 title = { Text(text = "Available Requests",color = Color.Black) },
-                backgroundColor = Color.White,
+                backgroundColor = Color(0xFFB5FED9),
                 elevation = 12.dp
             )},
         content = {

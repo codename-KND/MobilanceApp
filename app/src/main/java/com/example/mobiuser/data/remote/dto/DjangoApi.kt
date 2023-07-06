@@ -5,6 +5,7 @@ import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
+import com.example.mobiuser.domain.model.TripsResponseItem
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -24,5 +25,6 @@ interface DjangoApi {
     @GET("available_requests/{request_id}")
     suspend fun getThisRequests(@Header("Authorization") Authorization: String, @Path("request_id") requestId: Int,):AvailableTripsItem
 
-
+    @GET("drivertrips")
+    suspend fun getTrips(@Header("Authorization") Authorization: String):List<TripsResponseItem>
 }

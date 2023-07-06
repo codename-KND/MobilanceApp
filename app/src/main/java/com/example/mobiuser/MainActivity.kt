@@ -14,7 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.mobiuser.domain.model.AvailableTripsItem
+import com.example.mobiuser.presentation.GetDriverHistory.TripHistory
 
 import com.example.mobiuser.presentation.GetRequestsScreen.getRequests
 import com.example.mobiuser.presentation.GetRequestsScreen.AcceptTrip
@@ -43,6 +43,7 @@ sealed class  Goto(val route: String){
     object GetRequests: Goto("GetRequests")
     object MyApp: Goto("MyApp")
     object AcceptTrip: Goto("AcceptTrip")
+    object TripHistory: Goto("TripHistory")
 }
 
 @AndroidEntryPoint
@@ -80,6 +81,7 @@ fun NavigationAppHost(navController: NavHostController){
         composable(Goto.DriverHome.route){ driverHome(navController) }
         composable(Goto.DriverLogin.route){ driverLogin(navController) }
         composable(Goto.MapView.route){ mapScreen(navController) }
+        composable(Goto.TripHistory.route){ TripHistory()}
         //composable(Goto.MyApp.route){ MyApp(navController) }
 
 //        composable(Goto.GetRequests.route){ getRequests(

@@ -7,6 +7,7 @@ import com.example.mobiuser.domain.model.LoginResponse
 import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
+import com.example.mobiuser.domain.model.TripsResponseItem
 import com.example.mobiuser.domain.repository.DjangoRepository
 import javax.inject.Inject
 
@@ -37,6 +38,9 @@ class DjangoRepositoryImpl@Inject constructor(
 
     override suspend fun getThisRequest(header: String, path: Int): AvailableTripsItem {
         return api.getThisRequests(header, path)
+    }
+    override suspend fun getTrips(header: String): List<TripsResponseItem> {
+        return api.getTrips(header)
     }
 }
 
