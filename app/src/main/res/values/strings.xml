@@ -29,6 +29,7 @@
     //driverhome string
     <string name="greet2">Hey Driver, Lets Save Lives</string>
     <string name="available"> Requests Near You</string>
+    <string name="getTrips">Accept Trip</string>
 
 
 </resources>

@@ -21,7 +21,8 @@ class GetTripsViewModel @Inject constructor(
 private val _availableTrips: MutableLiveData<List<AvailableTripsItem>> = MutableLiveData()
     val availableTrips: LiveData<List<AvailableTripsItem>>
         get() = _availableTrips
-private val _singleTrip: MutableLiveData<AvailableTripsItem> = MutableLiveData()
+
+private val _singleTrip: MutableLiveData<AvailableTripsItem> by lazy{ MutableLiveData<AvailableTripsItem>()}
     val singleTrip: LiveData<AvailableTripsItem>
         get()=_singleTrip
     init {
@@ -35,10 +36,14 @@ private val _singleTrip: MutableLiveData<AvailableTripsItem> = MutableLiveData()
             }
         }
     }
-    fun fetchThisTrip(trip :Int) {
+    fun fetchThisTrip(trip: Int) {
         viewModelScope.launch {
-            val tripDetails = getThisRequestUC.getThisRequest(trip)
-            _singleTrip.value = tripDetails
-
-        }}
+            try {
+                val tripDetails = getThisRequestUC.getThisRequest(trip)
+                _singleTrip.value = tripDetails?: tripDetails
+            } catch (e: Exception) {
+                // errors
+            }
+        }
+    }
 }

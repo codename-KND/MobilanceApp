@@ -12,9 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.mobiuser.domain.model.AvailableTripsItem
-import com.example.mobiuser.presentation.detailsScreens.TripItem
 
 
 @Composable
@@ -37,10 +35,6 @@ fun getRequests(
                 elevation = 12.dp
             )},
         content = {
-//            TripList(
-//                availableTrips,
-//                onClick = { navigateToTrip(it) }
-//            )
             LazyColumn {
                 items(availableTrips) { trip ->
                     TripItem(

@@ -10,8 +10,9 @@ class ViewModelFun {
 
     fun navigateNext(navController: NavController,route: String) {
         navController.navigate(route) {
-            popUpTo(Goto.Login.route) {
+            popUpTo(Goto.DriverHome.route) {
                 inclusive = true
+                saveState =true
             }
         }
     }
