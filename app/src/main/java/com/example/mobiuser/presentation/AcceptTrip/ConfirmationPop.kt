@@ -12,8 +12,8 @@ import com.example.mobiuser.domain.model.AvailableTripsItem
 
 @Composable
 fun ConfirmationPopup(
-    availableTripsItem: AvailableTripsItem,
-    onConfirm: (AvailableTripsItem) -> Unit
+   // availableTripsItem: AvailableTripsItem,
+    onConfirm: () -> Unit
 ) {
     val showDialog = remember { mutableStateOf(false) }
 
@@ -21,11 +21,11 @@ fun ConfirmationPopup(
         AlertDialog(
             onDismissRequest = { showDialog.value = false },
             title = { Text(text = "Do You Want This Trip?") },
-            text = { Text(text = "Please confirm you want to accept this request$availableTripsItem ") },
+            text = { Text(text = "Please confirm you want to accept this request") },
             confirmButton = {
                 Button(
                     onClick = {
-                        onConfirm(availableTripsItem)
+                        onConfirm()
                         showDialog.value = false
                     },
                     colors = ButtonDefaults.buttonColors(

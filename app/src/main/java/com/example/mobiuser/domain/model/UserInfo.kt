@@ -10,3 +10,6 @@ data class UserInfo(
 data class request_id(
     @SerializedName("request_id")
     val request_id: Int)
+data class pending_id(
+    @SerializedName("pending_id")
+    val pending_id: Int)

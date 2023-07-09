@@ -1,5 +1,6 @@
 package com.example.mobiuser.domain.usecase.GetRequests
 
+import android.util.Log
 import com.example.mobiuser.domain.model.AvailableTripsItem
 import com.example.mobiuser.domain.repository.DjangoRepository
 import com.example.mobiuser.domain.tokens.TokenHandler
@@ -14,6 +15,9 @@ class GetThisRequestUC @Inject constructor(
         val header = "token "+tokenHandler.getToken()
         val path = requestId
         val tripDetails = repository.getThisRequest(header,path)
+        val storeID =tripDetails.request_id.toString()
+        Log.i("storeID","$storeID")
+        tokenHandler.storeRequestID(storeID)
         return tripDetails
     }
 }

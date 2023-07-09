@@ -36,68 +36,73 @@ import com.example.mobiuser.presentation.components.Signs
 
 
 @Composable
-fun AcceptTrip(trip:Int,navController: NavController,
-               getTripsViewModel: GetTripsViewModel = hiltViewModel() ) {
-
+fun AcceptTrip(
+    trip: Int,
+    navController: NavController,
+    getTripsViewModel: GetTripsViewModel = hiltViewModel()
+) {
     val details by getTripsViewModel.singleTrip.observeAsState()
     val showDialog = remember { mutableStateOf(false) }
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-       getTripsViewModel.fetchThisTrip(trip)
+        getTripsViewModel.fetchThisTrip(trip)
     }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Request Details",color = Color.Black) },
+                title = { Text(text = "Request Details", color = Color.Black) },
                 backgroundColor = Color.White,
                 elevation = 12.dp
             )
         },
         content = {
-            Column(modifier = Modifier
-                .fillMaxSize(1f)
-                .background(color = Color.Black)
-                .padding(7.dp),
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(1f)
+                    .background(color = Color.Black)
+                    .padding(7.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 //verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Spacer(modifier = Modifier.height(32.dp))
-                Text(text = "Here is the Trip Summary", fontWeight = FontWeight.Bold, fontSize =22.sp)
+                Text(
+                    text = "Here is the Trip Summary",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
+                )
 
                 Spacer(modifier = Modifier.height(28.dp))
 
                 Card(modifier = Modifier.fillMaxWidth(1f)) {
                     Column() {
-                    Text(text = "Patient name: ${details?.patient}")
-                    Spacer(modifier = Modifier.height(7.dp))
-                    Text(text = "Trip ID: ${details?.request_id}")
+                        Text(text = "Patient name: ${details?.patient}")
                         Spacer(modifier = Modifier.height(7.dp))
-                    Text(text = "Contact Detail: ${details?.contact}")
+                        Text(text = "Trip ID: ${details?.request_id}")
                         Spacer(modifier = Modifier.height(7.dp))
-                }
+                        Text(text = "Contact Detail: ${details?.contact}")
+                        Spacer(modifier = Modifier.height(7.dp))
+                    }
                 }
                 Spacer(modifier = Modifier.height(21.dp))
                 var help = Signs()
-                help.Buttons(onClick = { showDialog.value = true}, id = R.string.getTrips )
+                help.Buttons(onClick = { showDialog.value = true }, id = R.string.getTrips)
                 Spacer(modifier = Modifier.height(21.dp))
                 if (showDialog.value) {
-                    ConfirmationPopup(onConfirm ={ confirmedTrip ->
-                        navController.navigate(Goto.ConfirmedTrip.route
-                        ) {
+                    ConfirmationPopup(onConfirm = {
+                        navController.navigate(Goto.ConfirmedTrip.route) {
                             launchSingleTop = true
-                            popUpTo(Goto.ConfirmedTrip.route) {saveState = true }
+                            popUpTo(Goto.AcceptTrip.route) { saveState = true }
                             // Pass the confirmedTrip as an argument to the destination
-                            //this.arguments = bundleOf("confirmedTrip" to confirmedTrip
-
-                         details?.request_id )
+                            //this.arguments = bundleOf("confirmedTrip" to confirmedTrip )
+                            Toast.makeText(context," Confirmed. Setting up trip",Toast.LENGTH_SHORT).show()
                         }
                     })
-                    //Toast.makeText(context," Confirmed. Setting up trip", Toast.LENGTH_SHORT).show()
                 }
             }
-        })
+        }
+    )
 }
 
 

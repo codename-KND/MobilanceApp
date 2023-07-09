@@ -8,6 +8,7 @@ import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
 import com.example.mobiuser.domain.model.TripsResponseItem
+import com.example.mobiuser.domain.model.pending_id
 import com.example.mobiuser.domain.model.request_id
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -38,7 +39,7 @@ interface DjangoApi {
 
     @POST("complete_Trip")
     suspend fun completeTrip(@Header("Authorization") Authorization: String,
-                                @Body pending_id: Int): CompleteTripResponse
+                                @Body pending_id: pending_id): CompleteTripResponse
 
     /////MAP API
 

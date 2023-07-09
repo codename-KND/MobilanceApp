@@ -15,5 +15,21 @@ class TokenHandler @Inject constructor(
     fun getToken(): String {
         return sharedPreferences.getString("token", "") ?: ""
     }
+    fun storeRequestID(requestID: String){
+        val editor =sharedPreferences.edit()
+        editor.putString("requestID", requestID)
+        editor.apply()
+    }
+    fun getRequestID(): String {
+        return sharedPreferences.getString("requestID", "") ?:"" }
+
+    fun storePendingID(requestID: String){
+        val editor =sharedPreferences.edit()
+        editor.putString("pendingID", requestID)
+        editor.apply()
+    }
+    fun getPendingID(): String {
+        return sharedPreferences.getString("pendingID", "") ?: ""}
+
 
 }

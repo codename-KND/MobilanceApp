@@ -14,8 +14,11 @@ class acceptRequestUC @Inject constructor(
     suspend fun acceptTrip(requestID:request_id): AcceptTripResponse{
 
         val header = "token "+ tokenHandler.getToken()
-        val confirmation = repository.acceptRequest(header,requestID)
-
+        val requestId =tokenHandler.getRequestID().toInt()
+        val send =request_id(requestId)
+        val confirmation = repository.acceptRequest(header,send)
+        val pendingID= confirmation.pending_id.toString()
+        tokenHandler.storePendingID(pendingID)
         return confirmation
     }
 }

@@ -8,6 +8,7 @@ import com.example.mobiuser.domain.model.Credentials
 import com.example.mobiuser.domain.model.SignUpRequest
 import com.example.mobiuser.domain.model.SignUpResponse
 import com.example.mobiuser.domain.model.TripsResponseItem
+import com.example.mobiuser.domain.model.pending_id
 import com.example.mobiuser.domain.model.request_id
 
 interface DjangoRepository {
@@ -24,5 +25,5 @@ interface DjangoRepository {
 
     suspend fun acceptRequest(header:String,requestId:request_id): AcceptTripResponse
 
-    suspend fun completeTrip(header:String,pendingId:Int): CompleteTripResponse
+    suspend fun completeTrip(header:String,pendingId:pending_id): CompleteTripResponse
 }
