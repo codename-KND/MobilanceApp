@@ -22,10 +22,18 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.pm.PackageManager
 import android.widget.Toast
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
@@ -44,8 +52,7 @@ fun ConfirmedTrip(
 //        Log.i("availatbletrip","$availableTripsItem")
 //      acceptTripViewModel.acceptTrip(availableTripsItem)
 //    }
-    //get availableItem list
-    Text(text = "$availableTripsItem")
+
 
 
 
@@ -58,33 +65,37 @@ fun ConfirmedTrip(
     var userLongitude = remember { mutableStateOf(0.0) }
     var isButtonVisible = remember { mutableStateOf(true) }
     val context = LocalContext.current
+    var mapIntentUri by remember { mutableStateOf("") }
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        ShowGlobalMapIntentUri(context,mapIntentUri)
         if (isButtonVisible.value) {
             Button(
                 onClick = {
                     // Hide the button and get user's location
+
                     isButtonVisible.value = false
                     getLocation({ latitude, longitude ->
                         userLatitude.value = latitude
                         userLongitude.value = longitude
                     }, context) {
                         // Launch Google Maps with start and end points
-                        val mapIntentUri = "https://www.google.com/maps/dir/?api=1" +
-                                "&origin=$userLatitude,$userLongitude" +
-                                "&destination=$hospitalLatitude,$hospitalLongitude" +
-                                "&waypoints=$pickLatitude,$pickLongitude"
+                         mapIntentUri = "https://www.google.com/maps/dir/?api=1" +
+                                 "&origin=${userLatitude.value},${userLongitude.value}" +
+                                 "&destination=$hospitalLatitude,$hospitalLongitude" +
+                                 "&waypoints=$pickLatitude,$pickLongitude"
                         val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mapIntentUri))
-                        mapIntent.setPackage("com.google.android.apps.maps") // Specify Google Maps package
-                        if (mapIntent.resolveActivity(context.packageManager) != null) {
-                            context.startActivity(mapIntent)
-                        } else {
-                            Toast.makeText(context, "Google Maps is not installed", Toast.LENGTH_SHORT).show()
-                        }
+                        Log.i("Google","$mapIntentUri")
+                        Log.i("Google","$userLatitude")
+                        Log.i("Google","${userLatitude.value}")
+                        val maptwo =mapIntentUri
+                        mapIntent.setPackage("com.google.android.apps.maps")
                     }
                 },
                 enabled = isButtonVisible.value
@@ -92,34 +103,10 @@ fun ConfirmedTrip(
                 Text("Pick Location and Launch Google Maps")
             }
         }
-    }
 
-}
-
-@Composable
-fun GetLocationButton(onLocationReceived: (latitude: Double, longitude: Double) -> Unit) {
-    var isButtonVisible by remember { mutableStateOf(true) }
-    val showProgress = remember { mutableStateOf(false) }
-    val context = LocalContext.current
-    if (isButtonVisible) {
-        Button(
-            onClick = {
-                isButtonVisible = false
-                showProgress.value = true
-                getLocation(onLocationReceived, context) {
-                    showProgress.value = false
-
-                }
-            },
-            enabled = !showProgress.value
-        ) {
-            Text("Use my location")
-        }
-    }
-    if (showProgress.value) {
-        CircularProgressIndicator()
     }
 }
+
 
 private fun getLocation(
     onLocationReceived: (latitude: Double, longitude: Double) -> Unit,
@@ -148,5 +135,19 @@ private fun getLocation(
         // Request the necessary permissions
         ActivityCompat.requestPermissions(context as Activity,
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+    }
+}
+
+@Composable
+fun ShowGlobalMapIntentUri(context: Context,mapIntentUri: String) {
+    if (mapIntentUri.isNotEmpty()) {
+        val clickableText = "Open the location on Maps"
+        ClickableText(
+            text = AnnotatedString(clickableText),
+            onClick = {
+                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mapIntentUri))
+                context.startActivity(webIntent)
+            }
+        )
     }
 }
