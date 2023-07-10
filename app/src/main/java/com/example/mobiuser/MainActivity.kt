@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "MapView" ){
+    NavHost(navController = navController, startDestination = "driverLogin" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
@@ -110,6 +110,8 @@ fun NavigationAppHost(navController: NavHostController){
 
 
             }
+        /**comment: add navigation**/
+        //amendment zone
         composable(route= Goto.ConfirmedTrip.route){backStackEntry->
             val tripID = backStackEntry.arguments?.getInt("request_id")
             if (tripID != null) {

@@ -89,6 +89,8 @@ fun AcceptTrip(
                 var help = Signs()
                 help.Buttons(onClick = { showDialog.value = true }, id = R.string.getTrips)
                 Spacer(modifier = Modifier.height(21.dp))
+                /**Comment :amend pass trip id to confirmation popup**/
+                    //ammendment pass trip id
                 if (showDialog.value) {
                     ConfirmationPopup(onConfirm = {
                         navController.navigate(Goto.ConfirmedTrip.route) {
@@ -104,8 +106,6 @@ fun AcceptTrip(
         }
     )
 }
-
-
 
 
 

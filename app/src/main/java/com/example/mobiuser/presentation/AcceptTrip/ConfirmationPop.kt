@@ -25,6 +25,8 @@ fun ConfirmationPopup(
             confirmButton = {
                 Button(
                     onClick = {
+                        /**comment: pass trip id to completed trip**/
+                        //amendment pass tripid
                         onConfirm()
                         showDialog.value = false
                     },
