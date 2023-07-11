@@ -26,7 +26,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.os.bundleOf
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
@@ -98,7 +97,7 @@ fun AcceptTrip(
                             launchSingleTop = true
                             popUpTo(Goto.AcceptTrip.route) { saveState = true }
                             // Pass the confirmedTrip as an argument to the destination
-//                            this.arguments = bundleOf("confirmedTrip" to confirmedTrip )
+                            //this.arguments = bundleOf("confirmedTrip" to confirmedTrip )
                             Toast.makeText(context," Confirmed. Setting up trip",Toast.LENGTH_SHORT).show()
                         }
                     })
