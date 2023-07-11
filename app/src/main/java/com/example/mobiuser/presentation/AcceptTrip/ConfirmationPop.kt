@@ -12,7 +12,7 @@ import com.example.mobiuser.domain.model.AvailableTripsItem
 
 @Composable
 fun ConfirmationPopup(
-   // availableTripsItem: AvailableTripsItem,
+    //availableTripsItem: AvailableTripsItem,
     onConfirm: () -> Unit
 ) {
     val showDialog = remember { mutableStateOf(false) }

@@ -93,7 +93,7 @@ fun AcceptTrip(
                     //ammendment pass trip id
                 if (showDialog.value) {
                     ConfirmationPopup(onConfirm = {
-                        navController.navigate(Goto.ConfirmedTrip.route) {
+                        navController.navigate( "${Goto.ConfirmedTrip.route}/$trip") {
                             launchSingleTop = true
                             popUpTo(Goto.AcceptTrip.route) { saveState = true }
                             // Pass the confirmedTrip as an argument to the destination

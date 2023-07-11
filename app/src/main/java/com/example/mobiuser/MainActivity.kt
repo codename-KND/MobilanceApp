@@ -112,11 +112,26 @@ fun NavigationAppHost(navController: NavHostController){
             }
         /**comment: add navigation**/
         //amendment zone
-        composable(route= Goto.ConfirmedTrip.route){backStackEntry->
-            val tripID = backStackEntry.arguments?.getInt("request_id")
-            if (tripID != null) {
-                ConfirmedTrip(availableTripsItem = tripID,navController)
+//        composable(route= Goto.ConfirmedTrip.route){backStackEntry->
+//            val tripID = backStackEntry.arguments?.getInt("request_id")
+//            if (tripID != null) {
+//                ConfirmedTrip(availableTripsItem = tripID,navController)
+//            }
+//        }
+
+        composable(
+            route = "${Goto.ConfirmedTrip.route}/{tripId}",
+            arguments = listOf(
+                navArgument("tripId") {
+                    type = NavType.IntType
+                }
+            )
+        ) { backStackEntry ->
+            val requestId = backStackEntry.arguments?.getInt("requestId")
+            if (requestId != null) {
+                ConfirmedTrip(availableTripsItem = requestId, navController)
             }
+
         }
 
 

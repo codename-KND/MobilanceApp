@@ -53,6 +53,8 @@ fun ConfirmedTrip(
 //      acceptTripViewModel.acceptTrip(availableTripsItem)
 //    }
 
+    
+    Text(text = "$availableTripsItem")
 
 
 
