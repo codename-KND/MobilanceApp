@@ -37,7 +37,7 @@ interface DjangoApi {
     suspend fun acceptRequest(@Header("Authorization") Authorization: String,
                               @Body request_id: request_id):AcceptTripResponse
 
-    @POST("complete_Trip")
+    @POST("complete_trip")
     suspend fun completeTrip(@Header("Authorization") Authorization: String,
                                 @Body pending_id: pending_id): CompleteTripResponse
 

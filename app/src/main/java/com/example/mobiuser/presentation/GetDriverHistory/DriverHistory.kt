@@ -85,5 +85,5 @@ fun TripItem(trip: TripsResponseItem) {
 
 fun getHospitalName(latitude: Double, longitude: Double): String? {
     val hospital = hospitals.find { it.latitude == latitude && it.longitude == longitude }
-    return hospital?.name
+    return hospital?.name ?: "Unknown Hospital"
 }

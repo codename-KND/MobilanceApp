@@ -14,7 +14,7 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 @Composable
-fun mapScreenss(navController: NavController) {
+fun mapScreens(navController: NavController) {
 
         val context = LocalContext.current
             var latitude =-1.2734000000000000
@@ -34,14 +34,4 @@ fun mapScreenss(navController: NavController) {
             Text("Launch Google Maps")
         }
 
-}
-@Composable
-fun mapScreen(navController: NavController) {
-    val context = LocalContext.current
-    val mapIntentUri = "geo:-1.27340,36.80610"
-    val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mapIntentUri))
-    val chooserIntent = Intent.createChooser(mapIntent, "Launch Maps")
-    if (mapIntent.resolveActivity(context.packageManager) != null) {
-        context.startActivity(chooserIntent)
-    }
 }

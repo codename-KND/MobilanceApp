@@ -30,6 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.mobiuser.Goto
 import com.example.mobiuser.R
+import com.example.mobiuser.domain.model.AvailableTripsItem
 import com.example.mobiuser.domain.model.request_id
 import com.example.mobiuser.presentation.GetRequestsScreen.GetTripsViewModel
 import com.example.mobiuser.presentation.components.Signs
@@ -38,13 +39,12 @@ import com.example.mobiuser.presentation.components.Signs
 @Composable
 fun AcceptTrip(
     trip: Int,
-    navController: NavController,
+    navigateToTrip:(Int) -> Unit,
     getTripsViewModel: GetTripsViewModel = hiltViewModel()
 ) {
     val details by getTripsViewModel.singleTrip.observeAsState()
     val showDialog = remember { mutableStateOf(false) }
     val context = LocalContext.current
-
     LaunchedEffect(Unit) {
         getTripsViewModel.fetchThisTrip(trip)
     }
@@ -92,14 +92,11 @@ fun AcceptTrip(
                 /**Comment :amend pass trip id to confirmation popup**/
                     //ammendment pass trip id
                 if (showDialog.value) {
-                    ConfirmationPopup(onConfirm = {
-                        navController.navigate( "${Goto.ConfirmedTrip.route}/$trip") {
-                            launchSingleTop = true
-                            popUpTo(Goto.AcceptTrip.route) { saveState = true }
-                            // Pass the confirmedTrip as an argument to the destination
-                            //this.arguments = bundleOf("confirmedTrip" to confirmedTrip )
-                            Toast.makeText(context," Confirmed. Setting up trip",Toast.LENGTH_SHORT).show()
-                        }
+                    ConfirmationPopup(
+                        trip = trip,
+                        onConfirm ={confirmedTripId ->
+                        navigateToTrip(confirmedTripId)
+                        Toast.makeText(context, "Confirmed. Setting up trip", Toast.LENGTH_SHORT).show()
                     })
                 }
             }
@@ -110,4 +107,6 @@ fun AcceptTrip(
 
 
 
+//                            launchSingleTop = true
+//                            popUpTo(Goto.AcceptTrip.route) { saveState = true }
 

@@ -12,8 +12,8 @@ import com.example.mobiuser.domain.model.AvailableTripsItem
 
 @Composable
 fun ConfirmationPopup(
-    //availableTripsItem: AvailableTripsItem,
-    onConfirm: () -> Unit
+    trip: Int,
+    onConfirm: (Int) -> Unit
 ) {
     val showDialog = remember { mutableStateOf(false) }
 
@@ -27,7 +27,7 @@ fun ConfirmationPopup(
                     onClick = {
                         /**comment: pass trip id to completed trip**/
                         //amendment pass tripid
-                        onConfirm()
+                        onConfirm(trip)
                         showDialog.value = false
                     },
                     colors = ButtonDefaults.buttonColors(

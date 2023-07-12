@@ -8,15 +8,15 @@ import com.example.mobiuser.domain.model.hospitals
 
 class ViewModelFun {
 
-    fun navigateNext(navController: NavController,route: String) {
+    fun navigateNext(navController: NavController, route: String) {
         navController.navigate(route) {
-            popUpTo(Goto.DriverHome.route) {
+            popUpTo(route) {
                 inclusive = true
-                saveState =true
             }
         }
     }
-     fun showError(context: Context){
+
+    fun showError(context: Context){
         Toast.makeText(context," An error occurred, please try again", Toast.LENGTH_SHORT).show()
     }
 

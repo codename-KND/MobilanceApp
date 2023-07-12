@@ -12,7 +12,7 @@ class completeTripUC @Inject constructor(
     private val tokenHandler: TokenHandler
 
 ) {
-    suspend fun completeTrip(pendingID:Int): CompleteTripResponse{
+    suspend fun completeTrip(): CompleteTripResponse{
 
         val header ="Basic eUJFMURLYnZFaWM0Ykg5OEhibG44QTF3d3FPcU5yUkw6T1RCTzNGTHhiY3JoWWlyeA=="
         val pending = tokenHandler.getPendingID().toInt()

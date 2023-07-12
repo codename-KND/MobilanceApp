@@ -19,6 +19,7 @@ import com.example.mobiuser.presentation.GetDriverHistory.TripHistory
 
 import com.example.mobiuser.presentation.GetRequestsScreen.getRequests
 import com.example.mobiuser.presentation.AcceptTrip.AcceptTrip
+import com.example.mobiuser.presentation.CompleteTrip.EndTrip
 import com.example.mobiuser.ui.theme.driversUI.driverHome
 import com.example.mobiuser.presentation.loginScreen.driverLogin
 import com.example.mobiuser.presentation.shared.Launch
@@ -28,7 +29,7 @@ import com.example.mobiuser.ui.theme.userUI.Login
 import com.example.mobiuser.presentation.requestAmbulance.Request
 import com.example.mobiuser.presentation.signUpScreen.SignUp
 import com.example.mobiuser.presentation.shared.prelaunch
-import com.example.mobiuser.ui.theme.userUI.mapScreen
+
 import dagger.hilt.android.AndroidEntryPoint
 
 sealed class  Goto(val route: String){
@@ -47,6 +48,7 @@ sealed class  Goto(val route: String){
     object TripHistory: Goto("TripHistory")
 
     object ConfirmedTrip: Goto("ConfirmedTrip")
+    object EndTrip: Goto("EndTrip")
 }
 
 @AndroidEntryPoint
@@ -73,7 +75,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "driverHome" ){
+    NavHost(navController = navController, startDestination = "driverLogin" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
@@ -83,8 +85,9 @@ fun NavigationAppHost(navController: NavHostController){
         composable(Goto.Request.route){ Request(navController) }
         composable(Goto.DriverHome.route){ driverHome(navController) }
         composable(Goto.DriverLogin.route){ driverLogin(navController) }
-        composable(Goto.MapView.route){ mapScreen(navController) }
+       // composable(Goto.MapView.route){ mapScreen(navController) }
         composable(Goto.TripHistory.route){ TripHistory()}
+        composable(Goto.EndTrip.route) { EndTrip(navController) }
 
         composable(Goto.GetRequests.route) {
             getRequests(
@@ -105,31 +108,28 @@ fun NavigationAppHost(navController: NavHostController){
         ) { backStackEntry ->
             val requestId = backStackEntry.arguments?.getInt("requestId")
             if (requestId != null) {
-                AcceptTrip(trip = requestId,navController)
-            }
+                AcceptTrip(trip = requestId,
+                    navigateToTrip = { trip ->
+                        navController.navigate(
+                            "${Goto.ConfirmedTrip.route}/${trip}"
+                        )
+                    }
+                )
 
-
             }
-        /**comment: add navigation**/
-        //amendment zone
-//        composable(route= Goto.ConfirmedTrip.route){backStackEntry->
-//            val tripID = backStackEntry.arguments?.getInt("request_id")
-//            if (tripID != null) {
-//                ConfirmedTrip(availableTripsItem = tripID,navController)
-//            }
-//        }
+        }
 
         composable(
-            route = "${Goto.ConfirmedTrip.route}/{tripId}",
+            route = "${Goto.ConfirmedTrip.route}/{requestId}",
             arguments = listOf(
-                navArgument("tripId") {
+                navArgument("requestId") {
                     type = NavType.IntType
                 }
             )
         ) { backStackEntry ->
             val requestId = backStackEntry.arguments?.getInt("requestId")
             if (requestId != null) {
-                ConfirmedTrip(availableTripsItem = requestId, navController)
+                ConfirmedTrip(tripId = requestId,navController)
             }
 
         }

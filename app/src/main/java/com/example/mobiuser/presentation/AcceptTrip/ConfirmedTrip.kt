@@ -22,20 +22,30 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.pm.PackageManager
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.mobiuser.Goto
+import com.example.mobiuser.presentation.GetRequestsScreen.GetTripsViewModel
 import com.google.android.gms.location.LocationServices
 
 
@@ -43,26 +53,24 @@ import com.google.android.gms.location.LocationServices
 @Composable
 
 fun ConfirmedTrip(
-    availableTripsItem: Int,
-    navController: NavController,
-    acceptTripViewModel: AcceptTripViewModel = hiltViewModel()
+    tripId: Int, navController: NavController,
+    acceptTripViewModel: AcceptTripViewModel = hiltViewModel(),
+    getTripsViewModel: GetTripsViewModel = hiltViewModel(),
 
 ){
-//    LaunchedEffect(Unit) {
-//        Log.i("availatbletrip","$availableTripsItem")
-//      acceptTripViewModel.acceptTrip(availableTripsItem)
-//    }
+    val details by getTripsViewModel.singleTrip.observeAsState()
 
-    
-    Text(text = "$availableTripsItem")
+    LaunchedEffect(Unit) {
+
+      acceptTripViewModel.acceptTrip(tripId)
+        getTripsViewModel.fetchThisTrip(tripId)
+    }
 
 
-
-    var hospitalLatitude =-1.2734000000000000
-    var hospitalLongitude=36.8061000000000000
-    var pickLatitude=-1.2618564000000000
-    var pickLongitude=36.8102071000000000
-
+    var hospitalLatitude =details?.hospitalLatitude
+    var hospitalLongitude=details?.hospitalLongitude
+    var pickLatitude=details?.pickLatitude
+    var pickLongitude=details?.pickLongitude
     var userLatitude = remember { mutableStateOf(0.0) }
     var userLongitude = remember { mutableStateOf(0.0) }
     var isButtonVisible = remember { mutableStateOf(true) }
@@ -76,7 +84,7 @@ fun ConfirmedTrip(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        ShowGlobalMapIntentUri(context,mapIntentUri)
+        ShowGlobalMapIntentUri(context,mapIntentUri,navController)
         if (isButtonVisible.value) {
             Button(
                 onClick = {
@@ -102,7 +110,7 @@ fun ConfirmedTrip(
                 },
                 enabled = isButtonVisible.value
             ) {
-                Text("Pick Location and Launch Google Maps")
+                Text("Start Trip")
             }
         }
 
@@ -134,22 +142,9 @@ private fun getLocation(
             onCompletion()
         }
     } else {
-        // Request the necessary permissions
+
         ActivityCompat.requestPermissions(context as Activity,
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
     }
 }
 
-@Composable
-fun ShowGlobalMapIntentUri(context: Context,mapIntentUri: String) {
-    if (mapIntentUri.isNotEmpty()) {
-        val clickableText = "Open the location on Maps"
-        ClickableText(
-            text = AnnotatedString(clickableText),
-            onClick = {
-                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mapIntentUri))
-                context.startActivity(webIntent)
-            }
-        )
-    }
-}
