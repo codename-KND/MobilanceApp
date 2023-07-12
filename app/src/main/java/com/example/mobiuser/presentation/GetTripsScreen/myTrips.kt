@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -34,6 +35,13 @@ fun MyApp(getTripsViewModel: GetTripsViewModel = hiltViewModel()) {
     }
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Your Trip History",color = Color.Black) },
+                backgroundColor = Color(0x80FF6BA368),
+                elevation = 12.dp
+            )
+        },
             content = {
                 TripList(trips) }
             )
@@ -79,5 +87,6 @@ fun TripItem(trip: TripsResponseItem) {
 
 fun getHospitalName(latitude: Double, longitude: Double): String? {
     val hospital = hospitals.find { it.latitude == latitude && it.longitude == longitude }
-    return hospital?.name
+
+    return hospital?.name ?: "Hospital"
 }

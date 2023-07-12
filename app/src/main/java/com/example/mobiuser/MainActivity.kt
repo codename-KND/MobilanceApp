@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NavigationAppHost(navController: NavHostController){
-    NavHost(navController = navController, startDestination = "Home" ){
+    NavHost(navController = navController, startDestination = "Login" ){
 
         composable(Goto.Prelaunch.route){ prelaunch(navController) }
         composable(Goto.Launch.route){ Launch(navController) }
